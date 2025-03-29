@@ -2,8 +2,8 @@ export default function Services() {
     return (
         <>
             <div className="bg-gray-50">
-                <div className="container m-auto px-4">
-                    <div className="w-full flex items-center py-10">
+                <div className="container m-auto px-4 py-24">
+                    <div className="w-full flex items-center">
                         <div class="text-center m-auto">
                             <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
                                 Our Services
@@ -16,7 +16,7 @@ export default function Services() {
                     </div>
                     <div
                         id="accordion-collapse"
-                        className="pb-8"
+                        className="mt-20 pb-8"
                         data-accordion="collapse"
                     >
                         <div className="bg-white rounded-md shadow-md mb-4">
@@ -390,7 +390,7 @@ export default function Services() {
                             </div>
                         </div>
                     </div>
-                    <div class="my-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+                    <div class="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
                         <div class="bg-white rounded-lg shadow-lg p-6 hover:transform hover:scale-105 transition-transform duration-300">
                             <div class="flex justify-center">
                                 <svg

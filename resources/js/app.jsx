@@ -1,9 +1,12 @@
 import '../css/app.css';
 import './bootstrap';
 
-import { createInertiaApp } from '@inertiajs/react';
+import { createInertiaApp, router } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
+import { initFlowbite } from "flowbite";
+import "bootstrap-icons/font/bootstrap-icons.css";
+
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -22,4 +25,12 @@ createInertiaApp({
     progress: {
         color: '#4B5563',
     },
+}).then(() => {
+    // on first load
+    initFlowbite();
+});
+
+router.on('navigate', (event) => {
+    // on each router load, this fixes the issue that flowbite has with inertia.
+    initFlowbite();
 });

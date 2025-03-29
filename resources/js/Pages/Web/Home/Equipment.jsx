@@ -12,18 +12,18 @@ export default function Equipment() {
                     </p>
                 </div>
                 <div
-                    id="accordion-collapse"
+                    id="equipments"
                     className="mt-20"
                     data-accordion="collapse"
                 >
                     <div className="bg-white rounded-md shadow-md mb-4">
-                        <h2 id="accordion-collapse-heading-5">
+                        <h2 id="equipments-heading-1">
                             <button
                                 type="button"
                                 className="hover:bg-gray-50 rounded-md flex items-center justify-between w-full p-5 font-medium"
-                                data-accordion-target="#accordion-collapse-body-5"
+                                data-accordion-target="#equipments-body-1"
                                 aria-expanded="true"
-                                aria-controls="accordion-collapse-body-5"
+                                aria-controls="equipments-body-1"
                             >
                                 <div className="flex items-center">
                                     <svg
@@ -66,9 +66,9 @@ export default function Equipment() {
                             </button>
                         </h2>
                         <div
-                            id="accordion-collapse-body-5"
+                            id="equipments-body-1"
                             className="hidden"
-                            aria-labelledby="accordion-collapse-heading-5"
+                            aria-labelledby="equipments-heading-1"
                         >
                             <div className="p-5">
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
@@ -137,44 +137,35 @@ export default function Equipment() {
                         </div>
                     </div>
                     <div className="bg-white rounded-md shadow-md mb-4">
-                        <h2 id="accordion-collapse-heading-2">
+                        <h2 id="equipments-heading-2">
                             <button
                                 type="button"
                                 className="hover:bg-gray-50 rounded-md flex items-center justify-between w-full p-5 font-medium"
-                                data-accordion-target="#accordion-collapse-body-2"
+                                data-accordion-target="#equipments-body-2"
                                 aria-expanded="true"
-                                aria-controls="accordion-collapse-body-2"
+                                aria-controls="equipments-body-2"
                             >
-                                <div className="flex gap-2 items-center">
-                                    <div className="text-blue-600 text-2xl">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="24"
-                                            height="24"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            class="lucide lucide-stethoscope h-6 w-6 text-blue-500"
-                                        >
-                                            <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"></path>
-                                            <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"></path>
-                                            <circle
-                                                cx="20"
-                                                cy="10"
-                                                r="2"
-                                            ></circle>
-                                        </svg>
-                                    </div>
-                                    <div className="text-start">
-                                        <div>Medical Care</div>
-                                        <div className="text-sm font-normal">
-                                            Professional medical care and health
-                                            monitoring services.
-                                        </div>
-                                    </div>
+                                <div className="flex items-center">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width={24}
+                                        height={24}
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth={2}
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="lucide lucide-bed h-6 w-6 text-blue-500"
+                                    >
+                                        <path d="M2 4v16" />
+                                        <path d="M2 8h18a2 2 0 0 1 2 2v10" />
+                                        <path d="M2 17h20" />
+                                        <path d="M6 8v9" />
+                                    </svg>
+                                    <h3 className="ml-3 text-lg font-medium text-gray-900">
+                                        Hospital Beds &amp; Accessories
+                                    </h3>
                                 </div>
                                 <svg
                                     data-accordion-icon
@@ -195,37 +186,54 @@ export default function Equipment() {
                             </button>
                         </h2>
                         <div
-                            id="accordion-collapse-body-2"
+                            id="equipments-body-2"
                             className="hidden"
-                            aria-labelledby="accordion-collapse-heading-2"
+                            aria-labelledby="equipments-heading-2"
                         >
                             <div className="p-5">
-                                <div className="grid grid-cols-2 gap-4">
-                                    <div
-                                        role="button"
-                                        className="bg-gray-50 hover:bg-blue-50 w-full p-3 font-semibold rounded-md"
-                                    >
-                                        Medication Management
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Electric Hospital Beds
+                                        </p>
                                     </div>
-                                    <div
-                                        role="button"
-                                        className="bg-gray-50 hover:bg-blue-50 w-full p-3 font-semibold rounded-md"
-                                    >
-                                        Wound Care
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Manual Hospital Beds
+                                        </p>
                                     </div>
-                                    <div
-                                        role="button"
-                                        className="bg-gray-50 hover:bg-blue-50 w-full p-3 font-semibold rounded-md"
-                                    >
-                                        Vital Signs Monitoring
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Bariatric Beds
+                                        </p>
                                     </div>
-                                    <div
-                                        role="button"
-                                        className="bg-gray-50 hover:bg-blue-50 w-full p-3 font-semibold rounded-md"
-                                    >
-                                        Health Assessments
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Bed Rails
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Pressure Relief Mattresses
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Over-bed Tables
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Bed Positioning Devices
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Bed Accessories
+                                        </p>
                                     </div>
                                 </div>
+
                                 <div className="mt-4 text-right">
                                     <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-800">
                                         Learn More
@@ -249,45 +257,41 @@ export default function Equipment() {
                         </div>
                     </div>
                     <div className="bg-white rounded-md shadow-md mb-4">
-                        <h2 id="accordion-collapse-heading-3">
+                        <h2 id="equipments-heading-3">
                             <button
                                 type="button"
                                 className="hover:bg-gray-50 rounded-md flex items-center justify-between w-full p-5 font-medium"
-                                data-accordion-target="#accordion-collapse-body-3"
+                                data-accordion-target="#equipments-body-3"
                                 aria-expanded="true"
-                                aria-controls="accordion-collapse-body-3"
+                                aria-controls="equipments-body-3"
                             >
-                                <div className="flex gap-2 items-center">
-                                    <div className="text-blue-600 text-2xl">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="24"
-                                            height="24"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            class="lucide lucide-users h-6 w-6 text-blue-500"
-                                        >
-                                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                                            <circle
-                                                cx="9"
-                                                cy="7"
-                                                r="4"
-                                            ></circle>
-                                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                        </svg>
-                                    </div>
-                                    <div className="text-start">
-                                        <div>Senior Care</div>
-                                        <div className="text-sm font-normal">
-                                            Specialized care services tailored
-                                            for elderly individuals.
-                                        </div>
-                                    </div>
+                                <div className="flex items-center">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width={24}
+                                        height={24}
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth={2}
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="lucide lucide-shower-head h-6 w-6 text-blue-500"
+                                    >
+                                        <path d="m4 4 2.5 2.5" />
+                                        <path d="M13.5 6.5a4.95 4.95 0 0 0-7 7" />
+                                        <path d="M15 5 5 15" />
+                                        <path d="M14 17v.01" />
+                                        <path d="M10 16v.01" />
+                                        <path d="M13 13v.01" />
+                                        <path d="M16 10v.01" />
+                                        <path d="M11 20v.01" />
+                                        <path d="M17 14v.01" />
+                                        <path d="M20 11v.01" />
+                                    </svg>
+                                    <h3 className="ml-3 text-lg font-medium text-gray-900">
+                                        Bathroom Safety
+                                    </h3>
                                 </div>
                                 <svg
                                     data-accordion-icon
@@ -308,37 +312,54 @@ export default function Equipment() {
                             </button>
                         </h2>
                         <div
-                            id="accordion-collapse-body-3"
+                            id="equipments-body-3"
                             className="hidden"
-                            aria-labelledby="accordion-collapse-heading-3"
+                            aria-labelledby="equipments-heading-3"
                         >
                             <div className="p-5">
-                                <div className="grid grid-cols-2 gap-4">
-                                    <div
-                                        role="button"
-                                        className="bg-gray-50 hover:bg-blue-50 w-full p-3 font-semibold rounded-md"
-                                    >
-                                        Fall Prevention
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Shower Chairs
+                                        </p>
                                     </div>
-                                    <div
-                                        role="button"
-                                        className="bg-gray-50 hover:bg-blue-50 w-full p-3 font-semibold rounded-md"
-                                    >
-                                        Memory Care
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Toilet Safety Rails
+                                        </p>
                                     </div>
-                                    <div
-                                        role="button"
-                                        className="bg-gray-50 hover:bg-blue-50 w-full p-3 font-semibold rounded-md"
-                                    >
-                                        Mobility Assistance
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Raised Toilet Seats
+                                        </p>
                                     </div>
-                                    <div
-                                        role="button"
-                                        className="bg-gray-50 hover:bg-blue-50 w-full p-3 font-semibold rounded-md"
-                                    >
-                                        Social Activities
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Bath Lifts
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Grab Bars
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Bath Benches
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Commodes
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Non-Slip Mats
+                                        </p>
                                     </div>
                                 </div>
+
                                 <div className="mt-4 text-right">
                                     <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-800">
                                         Learn More
@@ -362,46 +383,32 @@ export default function Equipment() {
                         </div>
                     </div>
                     <div className="bg-white rounded-md shadow-md mb-4">
-                        <h2 id="accordion-collapse-heading-4">
+                        <h2 id="equipments-heading-4">
                             <button
                                 type="button"
                                 className="hover:bg-gray-50 rounded-md flex items-center justify-between w-full p-5 font-medium"
-                                data-accordion-target="#accordion-collapse-body-4"
+                                data-accordion-target="#equipments-body-4"
                                 aria-expanded="true"
-                                aria-controls="accordion-collapse-body-4"
+                                aria-controls="equipments-body-4"
                             >
-                                <div className="flex gap-2 items-center">
-                                    <div className="text-blue-600 text-2xl">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="24"
-                                            height="24"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            class="lucide lucide-brain h-6 w-6 text-blue-500"
-                                        >
-                                            <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"></path>
-                                            <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"></path>
-                                            <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"></path>
-                                            <path d="M17.599 6.5a3 3 0 0 0 .399-1.375"></path>
-                                            <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"></path>
-                                            <path d="M3.477 10.896a4 4 0 0 1 .585-.396"></path>
-                                            <path d="M19.938 10.5a4 4 0 0 1 .585.396"></path>
-                                            <path d="M6 18a4 4 0 0 1-1.967-.516"></path>
-                                            <path d="M19.967 17.484A4 4 0 0 1 18 18"></path>
-                                        </svg>
-                                    </div>
-                                    <div className="text-start">
-                                        <div>Pediatric Care</div>
-                                        <div className="text-sm font-normal">
-                                            Dedicated care services for children
-                                            with special needs.
-                                        </div>
-                                    </div>
+                                <div className="flex items-center">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width={24}
+                                        height={24}
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth={2}
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="lucide lucide-activity h-6 w-6 text-blue-500"
+                                    >
+                                        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                                    </svg>
+                                    <h3 className="ml-3 text-lg font-medium text-gray-900">
+                                        Patient Monitoring
+                                    </h3>
                                 </div>
                                 <svg
                                     data-accordion-icon
@@ -422,37 +429,54 @@ export default function Equipment() {
                             </button>
                         </h2>
                         <div
-                            id="accordion-collapse-body-4"
+                            id="equipments-body-4"
                             className="hidden"
-                            aria-labelledby="accordion-collapse-heading-4"
+                            aria-labelledby="equipments-heading-4"
                         >
                             <div className="p-5">
-                                <div className="grid grid-cols-2 gap-4">
-                                    <div
-                                        role="button"
-                                        className="bg-gray-50 hover:bg-blue-50 w-full p-3 font-semibold rounded-md"
-                                    >
-                                        Development Support
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Blood Pressure Monitors
+                                        </p>
                                     </div>
-                                    <div
-                                        role="button"
-                                        className="bg-gray-50 hover:bg-blue-50 w-full p-3 font-semibold rounded-md"
-                                    >
-                                        Medical Care
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Pulse Oximeters
+                                        </p>
                                     </div>
-                                    <div
-                                        role="button"
-                                        className="bg-gray-50 hover:bg-blue-50 w-full p-3 font-semibold rounded-md"
-                                    >
-                                        Educational Support
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Blood Glucose Meters
+                                        </p>
                                     </div>
-                                    <div
-                                        role="button"
-                                        className="bg-gray-50 hover:bg-blue-50 w-full p-3 font-semibold rounded-md"
-                                    >
-                                        Family Assistance
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Heart Rate Monitors
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Temperature Monitors
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Fall Detection Devices
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Sleep Monitors
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            ECG Monitors
+                                        </p>
                                     </div>
                                 </div>
+
                                 <div className="mt-4 text-right">
                                     <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-800">
                                         Learn More
@@ -475,6 +499,610 @@ export default function Equipment() {
                             </div>
                         </div>
                     </div>
+                    <div className="bg-white rounded-md shadow-md mb-4">
+                        <h2 id="equipments-heading-5">
+                            <button
+                                type="button"
+                                className="hover:bg-gray-50 rounded-md flex items-center justify-between w-full p-5 font-medium"
+                                data-accordion-target="#equipments-body-5"
+                                aria-expanded="true"
+                                aria-controls="equipments-body-5"
+                            >
+                                <div className="flex items-center">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width={24}
+                                        height={24}
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth={2}
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="lucide lucide-sun h-6 w-6 text-blue-500"
+                                    >
+                                        <circle cx={12} cy={12} r={4} />
+                                        <path d="M12 2v2" />
+                                        <path d="M12 20v2" />
+                                        <path d="m4.93 4.93 1.41 1.41" />
+                                        <path d="m17.66 17.66 1.41 1.41" />
+                                        <path d="M2 12h2" />
+                                        <path d="M20 12h2" />
+                                        <path d="m6.34 17.66-1.41 1.41" />
+                                        <path d="m19.07 4.93-1.41 1.41" />
+                                    </svg>
+                                    <h3 className="ml-3 text-lg font-medium text-gray-900">
+                                        Respiratory Equipment
+                                    </h3>
+                                </div>
+                                <svg
+                                    data-accordion-icon
+                                    className="w-3 h-3 rotate-180 shrink-0"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 10 6"
+                                >
+                                    <path
+                                        stroke="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M9 5 5 1 1 5"
+                                    />
+                                </svg>
+                            </button>
+                        </h2>
+                        <div
+                            id="equipments-body-5"
+                            className="hidden"
+                            aria-labelledby="equipments-heading-5"
+                        >
+                            <div className="p-5">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Oxygen Concentrators
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            CPAP Machines
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Nebulizers
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Suction Machines
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Ventilators
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Oxygen Tanks
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Air Purifiers
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Respiratory Supplies
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="mt-4 text-right">
+                                    <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-800">
+                                        Learn More
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width={24}
+                                            height={24}
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth={2}
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            className="lucide lucide-chevron-down ml-1 h-4 w-4"
+                                        >
+                                            <path d="m6 9 6 6 6-6" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-white rounded-md shadow-md mb-4">
+                        <h2 id="equipments-heading-6">
+                            <button
+                                type="button"
+                                className="hover:bg-gray-50 rounded-md flex items-center justify-between w-full p-5 font-medium"
+                                data-accordion-target="#equipments-body-6"
+                                aria-expanded="true"
+                                aria-controls="equipments-body-6"
+                            >
+                                <div className="flex items-center">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width={24}
+                                        height={24}
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth={2}
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="lucide lucide-chevron-first h-6 w-6 text-blue-500"
+                                    >
+                                        <path d="m17 18-6-6 6-6" />
+                                        <path d="M7 6v12" />
+                                    </svg>
+                                    <h3 className="ml-3 text-lg font-medium text-gray-900">
+                                        Medical Supplies
+                                    </h3>
+                                </div>
+                                <svg
+                                    data-accordion-icon
+                                    className="w-3 h-3 rotate-180 shrink-0"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 10 6"
+                                >
+                                    <path
+                                        stroke="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M9 5 5 1 1 5"
+                                    />
+                                </svg>
+                            </button>
+                        </h2>
+                        <div
+                            id="equipments-body-6"
+                            className="hidden"
+                            aria-labelledby="equipments-heading-6"
+                        >
+                            <div className="p-5">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Wound Care Supplies
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Incontinence Products
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Diabetic Supplies
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Respiratory Supplies
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            First Aid Kits
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Compression Garments
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Ostomy Supplies
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Medical Tape &amp; Bandages
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="mt-4 text-right">
+                                    <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-800">
+                                        Learn More
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width={24}
+                                            height={24}
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth={2}
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            className="lucide lucide-chevron-down ml-1 h-4 w-4"
+                                        >
+                                            <path d="m6 9 6 6 6-6" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-white rounded-md shadow-md mb-4">
+                        <h2 id="equipments-heading-7">
+                            <button
+                                type="button"
+                                className="hover:bg-gray-50 rounded-md flex items-center justify-between w-full p-5 font-medium"
+                                data-accordion-target="#equipments-body-7"
+                                aria-expanded="true"
+                                aria-controls="equipments-body-7"
+                            >
+                                <div className="flex items-center">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width={24}
+                                        height={24}
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth={2}
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="lucide lucide-hand-metal h-6 w-6 text-blue-500"
+                                    >
+                                        <path d="M18 12.5V10a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v1.4" />
+                                        <path d="M14 11V9a2 2 0 1 0-4 0v2" />
+                                        <path d="M10 10.5V5a2 2 0 1 0-4 0v9" />
+                                        <path d="m7 15-1.76-1.76a2 2 0 0 0-2.83 2.82l3.6 3.6C7.5 21.14 9.2 22 12 22h2a8 8 0 0 0 8-8V7a2 2 0 1 0-4 0v5" />
+                                    </svg>
+                                    <h3 className="ml-3 text-lg font-medium text-gray-900">
+                                        Daily Living Aids
+                                    </h3>
+                                </div>
+                                <svg
+                                    data-accordion-icon
+                                    className="w-3 h-3 rotate-180 shrink-0"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 10 6"
+                                >
+                                    <path
+                                        stroke="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M9 5 5 1 1 5"
+                                    />
+                                </svg>
+                            </button>
+                        </h2>
+                        <div
+                            id="equipments-body-7"
+                            className="hidden"
+                            aria-labelledby="equipments-heading-7"
+                        >
+                            <div className="p-5">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Lift Chairs
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Patient Lifts
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Dressing Aids
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Eating Aids
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Reachers &amp; Grabbers
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Writing Aids
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Vision Aids
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Hearing Aids
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="mt-4 text-right">
+                                    <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-800">
+                                        Learn More
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width={24}
+                                            height={24}
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth={2}
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            className="lucide lucide-chevron-down ml-1 h-4 w-4"
+                                        >
+                                            <path d="m6 9 6 6 6-6" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-white rounded-md shadow-md mb-4">
+                        <h2 id="equipments-heading-8">
+                            <button
+                                type="button"
+                                className="hover:bg-gray-50 rounded-md flex items-center justify-between w-full p-5 font-medium"
+                                data-accordion-target="#equipments-body-8"
+                                aria-expanded="true"
+                                aria-controls="equipments-body-8"
+                            >
+                                <div className="flex items-center">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width={24}
+                                        height={24}
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth={2}
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="lucide lucide-bone h-6 w-6 text-blue-500"
+                                    >
+                                        <path d="M17 10c.7-.7 1.69 0 2.5 0a2.5 2.5 0 1 0 0-5 .5.5 0 0 1-.5-.5 2.5 2.5 0 1 0-5 0c0 .81.7 1.8 0 2.5l-7 7c-.7.7-1.69 0-2.5 0a2.5 2.5 0 0 0 0 5c.28 0 .5.22.5.5a2.5 2.5 0 1 0 5 0c0-.81-.7-1.8 0-2.5Z" />
+                                    </svg>
+                                    <h3 className="ml-3 text-lg font-medium text-gray-900">
+                                        Orthopedic Supplies
+                                    </h3>
+                                </div>
+                                <svg
+                                    data-accordion-icon
+                                    className="w-3 h-3 rotate-180 shrink-0"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 10 6"
+                                >
+                                    <path
+                                        stroke="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M9 5 5 1 1 5"
+                                    />
+                                </svg>
+                            </button>
+                        </h2>
+                        <div
+                            id="equipments-body-8"
+                            className="hidden"
+                            aria-labelledby="equipments-heading-8"
+                        >
+                            <div className="p-5">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Braces &amp; Supports
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Cervical Collars
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Knee Walkers
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Cast Covers
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Hot/Cold Therapy
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Orthopedic Pillows
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Foot Care Products
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Compression Therapy
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="mt-4 text-right">
+                                    <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-800">
+                                        Learn More
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width={24}
+                                            height={24}
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth={2}
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            className="lucide lucide-chevron-down ml-1 h-4 w-4"
+                                        >
+                                            <path d="m6 9 6 6 6-6" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-white rounded-md shadow-md mb-4">
+                        <h2 id="equipments-heading-9">
+                            <button
+                                type="button"
+                                className="hover:bg-gray-50 rounded-md flex items-center justify-between w-full p-5 font-medium"
+                                data-accordion-target="#equipments-body-9"
+                                aria-expanded="true"
+                                aria-controls="equipments-body-9"
+                            >
+                                <div className="flex items-center">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width={24}
+                                        height={24}
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth={2}
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="lucide lucide-stethoscope h-6 w-6 text-blue-500"
+                                    >
+                                        <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3" />
+                                        <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4" />
+                                        <circle cx={20} cy={10} r={2} />
+                                    </svg>
+                                    <h3 className="ml-3 text-lg font-medium text-gray-900">
+                                        Diagnostic Equipment
+                                    </h3>
+                                </div>
+                                <svg
+                                    data-accordion-icon
+                                    className="w-3 h-3 rotate-180 shrink-0"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 10 6"
+                                >
+                                    <path
+                                        stroke="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M9 5 5 1 1 5"
+                                    />
+                                </svg>
+                            </button>
+                        </h2>
+                        <div
+                            id="equipments-body-9"
+                            className="hidden"
+                            aria-labelledby="equipments-heading-9"
+                        >
+                            <div className="p-5">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Stethoscopes
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Otoscopes
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Blood Testing Devices
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Diagnostic Sets
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Vision Screening
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Reflex Hammers
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Thermometers
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Weight Scales
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="mt-4 text-right">
+                                    <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-800">
+                                        Learn More
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width={24}
+                                            height={24}
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth={2}
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            className="lucide lucide-chevron-down ml-1 h-4 w-4"
+                                        >
+                                            <path d="m6 9 6 6 6-6" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 text-center">
+                    <button class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200">
+                        View Full Catalog
+                    </button>
                 </div>
             </div>
         </>

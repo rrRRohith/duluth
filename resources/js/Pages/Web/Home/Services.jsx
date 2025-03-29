@@ -15,18 +15,18 @@ export default function Services() {
                         </div>
                     </div>
                     <div
-                        id="accordion-collapse"
+                        id="services"
                         className="mt-20 pb-8"
                         data-accordion="collapse"
                     >
                         <div className="bg-white rounded-md shadow-md mb-4">
-                            <h2 id="accordion-collapse-heading-1">
+                            <h2 id="services-heading-1">
                                 <button
                                     type="button"
                                     className="hover:bg-gray-50 rounded-md flex items-center justify-between w-full p-5 font-medium"
-                                    data-accordion-target="#accordion-collapse-body-1"
+                                    data-accordion-target="#services-body-1"
                                     aria-expanded="true"
-                                    aria-controls="accordion-collapse-body-1"
+                                    aria-controls="services-body-1"
                                 >
                                     <div className="flex items-center">
                                         <svg
@@ -73,9 +73,9 @@ export default function Services() {
                                 </button>
                             </h2>
                             <div
-                                id="accordion-collapse-body-1"
+                                id="services-body-1"
                                 className="hidden"
-                                aria-labelledby="accordion-collapse-heading-1"
+                                aria-labelledby="services-heading-1"
                             >
                                 <div className="p-5">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
@@ -118,13 +118,13 @@ export default function Services() {
                             </div>
                         </div>
                         <div className="bg-white rounded-md shadow-md mb-4">
-                            <h2 id="accordion-collapse-heading-2">
+                            <h2 id="services-heading-2">
                                 <button
                                     type="button"
                                     className="hover:bg-gray-50 rounded-md flex items-center justify-between w-full p-5 font-medium"
-                                    data-accordion-target="#accordion-collapse-body-2"
+                                    data-accordion-target="#services-body-2"
                                     aria-expanded="true"
-                                    aria-controls="accordion-collapse-body-2"
+                                    aria-controls="services-body-2"
                                 >
                                     <div className="flex items-center">
                                         <svg
@@ -172,9 +172,9 @@ export default function Services() {
                                 </button>
                             </h2>
                             <div
-                                id="accordion-collapse-body-2"
+                                id="services-body-2"
                                 className="hidden"
-                                aria-labelledby="accordion-collapse-heading-2"
+                                aria-labelledby="services-heading-2"
                             >
                                 <div className="p-5">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
@@ -222,13 +222,13 @@ export default function Services() {
                             </div>
                         </div>
                         <div className="bg-white rounded-md shadow-md mb-4">
-                            <h2 id="accordion-collapse-heading-3">
+                            <h2 id="services-heading-3">
                                 <button
                                     type="button"
                                     className="hover:bg-gray-50 rounded-md flex items-center justify-between w-full p-5 font-medium"
-                                    data-accordion-target="#accordion-collapse-body-3"
+                                    data-accordion-target="#services-body-3"
                                     aria-expanded="true"
-                                    aria-controls="accordion-collapse-body-3"
+                                    aria-controls="services-body-3"
                                 >
                                     <div className="flex items-center">
                                         <svg
@@ -278,9 +278,9 @@ export default function Services() {
                                 </button>
                             </h2>
                             <div
-                                id="accordion-collapse-body-3"
+                                id="services-body-3"
                                 className="hidden"
-                                aria-labelledby="accordion-collapse-heading-3"
+                                aria-labelledby="services-heading-3"
                             >
                                 <div className="p-5">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
@@ -328,13 +328,13 @@ export default function Services() {
                             </div>
                         </div>
                         <div className="bg-white rounded-md shadow-md mb-4">
-                            <h2 id="accordion-collapse-heading-4">
+                            <h2 id="services-heading-4">
                                 <button
                                     type="button"
                                     className="hover:bg-gray-50 rounded-md flex items-center justify-between w-full p-5 font-medium"
-                                    data-accordion-target="#accordion-collapse-body-4"
+                                    data-accordion-target="#services-body-4"
                                     aria-expanded="true"
-                                    aria-controls="accordion-collapse-body-4"
+                                    aria-controls="services-body-4"
                                 >
                                     <div className="flex items-center">
                                         <svg
@@ -388,9 +388,9 @@ export default function Services() {
                                 </button>
                             </h2>
                             <div
-                                id="accordion-collapse-body-4"
+                                id="services-body-4"
                                 className="hidden"
-                                aria-labelledby="accordion-collapse-heading-4"
+                                aria-labelledby="services-heading-4"
                             >
                                 <div className="p-5">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">

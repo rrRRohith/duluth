@@ -10,7 +10,7 @@ export default function Home() {
         <Layout title="Homecare System">
             <Banner />
             <Services />
-            <Equipment />
+            {/* <Equipment /> */}
             <VideoGallery />
             <Contact />
         </Layout>

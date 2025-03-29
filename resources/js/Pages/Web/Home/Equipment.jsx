@@ -17,38 +17,35 @@ export default function Equipment() {
                     data-accordion="collapse"
                 >
                     <div className="bg-white rounded-md shadow-md mb-4">
-                        <h2 id="accordion-collapse-heading-1">
+                        <h2 id="accordion-collapse-heading-5">
                             <button
                                 type="button"
                                 className="hover:bg-gray-50 rounded-md flex items-center justify-between w-full p-5 font-medium"
-                                data-accordion-target="#accordion-collapse-body-1"
+                                data-accordion-target="#accordion-collapse-body-5"
                                 aria-expanded="true"
-                                aria-controls="accordion-collapse-body-1"
+                                aria-controls="accordion-collapse-body-5"
                             >
-                                <div className="flex gap-2 items-center">
-                                    <div className="text-blue-600 text-2xl">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="24"
-                                            height="24"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            class="lucide lucide-heart h-6 w-6 text-blue-500"
-                                        >
-                                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
-                                        </svg>
-                                    </div>
-                                    <div className="text-start">
-                                        <div>General Care</div>
-                                        <div className="text-sm font-normal">
-                                            Basic care services including
-                                            companionship and daily assistance.
-                                        </div>
-                                    </div>
+                                <div className="flex items-center">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width={24}
+                                        height={24}
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth={2}
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="lucide lucide-armchair h-6 w-6 text-blue-500"
+                                    >
+                                        <path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3" />
+                                        <path d="M3 16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H7v-2a2 2 0 0 0-4 0Z" />
+                                        <path d="M5 18v2" />
+                                        <path d="M19 18v2" />
+                                    </svg>
+                                    <h3 className="ml-3 text-lg font-medium text-gray-900">
+                                        Mobility Equipment
+                                    </h3>
                                 </div>
                                 <svg
                                     data-accordion-icon
@@ -69,31 +66,54 @@ export default function Equipment() {
                             </button>
                         </h2>
                         <div
-                            id="accordion-collapse-body-1"
+                            id="accordion-collapse-body-5"
                             className="hidden"
-                            aria-labelledby="accordion-collapse-heading-1"
+                            aria-labelledby="accordion-collapse-heading-5"
                         >
                             <div className="p-5">
-                                <div className="grid grid-cols-2 gap-4">
-                                    <div
-                                        role="button"
-                                        className="bg-gray-50 hover:bg-blue-50 w-full p-3 font-semibold rounded-md"
-                                    >
-                                        Companionship
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Manual Wheelchairs
+                                        </p>
                                     </div>
-                                    <div
-                                        role="button"
-                                        className="bg-gray-50 hover:bg-blue-50 w-full p-3 font-semibold rounded-md"
-                                    >
-                                        Light Housekeeping
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Power Wheelchairs
+                                        </p>
                                     </div>
-                                    <div
-                                        role="button"
-                                        className="bg-gray-50 hover:bg-blue-50 w-full p-3 font-semibold rounded-md"
-                                    >
-                                        Meal Preparation
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Mobility Scooters
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Walkers &amp; Rollators
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Canes &amp; Crutches
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Patient Transfer Devices
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Wheelchair Cushions
+                                        </p>
+                                    </div>
+                                    <div className="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200 cursor-pointer">
+                                        <p className="text-gray-700">
+                                            Wheelchair Accessories
+                                        </p>
                                     </div>
                                 </div>
+
                                 <div className="mt-4 text-right">
                                     <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-800">
                                         Learn More

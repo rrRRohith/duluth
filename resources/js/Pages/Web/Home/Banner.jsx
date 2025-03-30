@@ -17,9 +17,10 @@ export default function Banner() {
                         </h1>
                         <p className="mt-6 text-xl text-white max-w-2xl mx-auto">
                             Providing compassionate and comprehensive home
-                            health care services to the Duluth community. Our
-                            experienced team is dedicated to delivering
-                            exceptional care right in the comfort of your home.
+                            health care services to counties and community in
+                            Georgia. Our experienced team is dedicated to
+                            delivering exceptional care right in the comfort of
+                            your home.
                         </p>
                         <div className="mt-10 flex justify-center space-x-4">
                             <a

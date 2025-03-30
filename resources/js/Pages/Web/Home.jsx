@@ -1,4 +1,4 @@
-import Layout from "./Components/Layout";
+import Wrapper from "./Components/Wrapper";
 import Services from "./Home/Services";
 import VideoGallery from "./Home/VideoGallery";
 import Contact from "./Home/Contact";
@@ -7,12 +7,12 @@ import Equipment from "./Home/Equipment";
 
 export default function Home() {
     return (
-        <Layout title="Homecare System">
+        <Wrapper title="Homecare System">
             <Banner />
             <Services />
             <Equipment />
             <VideoGallery />
             <Contact />
-        </Layout>
+        </Wrapper>
     );
 }

@@ -5,7 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', 'App\Http\Controllers\Controller@home')->name('index');
+Route::get('/', 'App\Http\Controllers\Controller@home')->name('home');
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [

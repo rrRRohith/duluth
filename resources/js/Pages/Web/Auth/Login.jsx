@@ -1,14 +1,17 @@
 import Layout from "../Components/Layout";
 import { Link } from "@inertiajs/react";
+import { useState } from "react";
+import classNames from "classnames";
 
 export default function Login() {
+    const [loginType, setLoginType] = useState("admin");
     return (
         <Layout title="Login">
             <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
                 <div className="absolute top-4 left-4">
                     <Link
                         className="inline-flex items-center text-gray-600 hover:text-blue-600 transition-colors"
-                        href={route('home')}
+                        href={route("home")}
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +55,10 @@ export default function Login() {
                 <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                     <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                         <div className="flex justify-center space-x-4 mb-8">
-                            <button className="flex items-center px-4 py-2 rounded-md bg-blue-600 text-white">
+                            <button
+                                onClick={(e) => setLoginType("admin")}
+                                className={classNames('flex items-center px-4 py-2 rounded-md', {'bg-blue-600 text-white' : loginType == 'admin', 'bg-gray-100 text-gray-600 hover:bg-gray-200' : loginType == 'staff'})}
+                            >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width={24}
@@ -72,7 +78,10 @@ export default function Login() {
                                 </svg>
                                 Admin Portal
                             </button>
-                            <button className="flex items-center px-4 py-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200">
+                            <button
+                                onClick={(e) => setLoginType("staff")}
+                                className={classNames('flex items-center px-4 py-2 rounded-md', {'bg-blue-600 text-white' : loginType == 'staff', 'bg-gray-100 text-gray-600 hover:bg-gray-200' : loginType == 'admin'})}
+                            >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width={24}
@@ -93,48 +102,49 @@ export default function Login() {
                                 Staff Portal
                             </button>
                         </div>
-                        <form className="space-y-6">
-                            <p className="text-sm text-gray-600 text-center mb-4">
-                                Admin access is restricted to authorized
-                                personnel only.
-                            </p>
-                            <div>
-                                <label
-                                    htmlFor="email"
-                                    className="block text-sm font-medium text-gray-700"
-                                >
-                                    Email address
-                                </label>
-                                <input
-                                    id="email"
-                                    type="email"
-                                    required
-                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                                />
-                            </div>
-                            <div>
-                                <label
-                                    htmlFor="password"
-                                    className="block text-sm font-medium text-gray-700"
-                                >
-                                    Password
-                                </label>
-                                <input
-                                    id="password"
-                                    type="password"
-                                    required
-                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                                />
-                            </div>
-                            <div>
-                                <button
-                                    type="submit"
-                                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                                >
-                                    Admin Sign In
-                                </button>
-                            </div>
-                            {/* <div className="text-center mt-4">
+                        {loginType == "admin" && (
+                            <form className="space-y-6">
+                                <p className="text-sm text-gray-600 text-center mb-4">
+                                    Admin access is restricted to authorized
+                                    personnel only.
+                                </p>
+                                <div>
+                                    <label
+                                        htmlFor="email"
+                                        className="block text-sm font-medium text-gray-700"
+                                    >
+                                        Email address
+                                    </label>
+                                    <input
+                                        id="email"
+                                        type="email"
+                                        required
+                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        htmlFor="password"
+                                        className="block text-sm font-medium text-gray-700"
+                                    >
+                                        Password
+                                    </label>
+                                    <input
+                                        id="password"
+                                        type="password"
+                                        required
+                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    />
+                                </div>
+                                <div>
+                                    <button
+                                        type="submit"
+                                        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                                    >
+                                        Admin Sign In
+                                    </button>
+                                </div>
+                                {/* <div className="text-center mt-4">
                                 <button
                                     type="button"
                                     className="text-blue-600 hover:text-blue-800 text-sm font-medium"
@@ -142,7 +152,65 @@ export default function Login() {
                                     Create Admin Account
                                 </button>
                             </div> */}
-                        </form>
+                            </form>
+                        )}
+                        {loginType == "staff" && (
+                            <form className="space-y-6">
+                                <p className="text-sm text-gray-600 text-center mb-4">
+                                    Access training resources and documentation.
+                                </p>
+                                <div>
+                                    <label
+                                        htmlFor="name"
+                                        className="block text-sm font-medium text-gray-700"
+                                    >
+                                        Full Name
+                                    </label>
+                                    <input
+                                        id="name"
+                                        type="text"
+                                        required
+                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        htmlFor="email"
+                                        className="block text-sm font-medium text-gray-700"
+                                    >
+                                        Email address
+                                    </label>
+                                    <input
+                                        id="email"
+                                        type="email"
+                                        required
+                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        htmlFor="password"
+                                        className="block text-sm font-medium text-gray-700"
+                                    >
+                                        Password
+                                    </label>
+                                    <input
+                                        id="password"
+                                        type="password"
+                                        required
+                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    />
+                                </div>
+                                <div>
+                                    <button
+                                        type="submit"
+                                        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                                    >
+                                        Staff Sign In
+                                    </button>
+                                </div>
+                            </form>
+                        )}
                     </div>
                 </div>
             </div>

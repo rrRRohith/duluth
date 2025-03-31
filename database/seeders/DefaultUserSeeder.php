@@ -29,7 +29,7 @@ class DefaultUserSeeder extends Seeder
             'password' => \Illuminate\Support\Facades\Hash::make('secret'),
         ]);
 
-        $staff = User::create([
+        $staff = User::firstOrCreate([
             'email' => 'staff@example.com',
         ], [
             'name'     => 'Staff User',

@@ -1,10 +1,37 @@
 import Layout from "../Components/Layout";
-import { Link } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
 import { useState } from "react";
 import classNames from "classnames";
+import Checkbox from '@/Components/Checkbox';
+import InputError from '@/Components/InputError';
+import InputLabel from '@/Components/InputLabel';
+import PrimaryButton from '@/Components/PrimaryButton';
+import TextInput from '@/Components/TextInput';
 
 export default function Login() {
     const [loginType, setLoginType] = useState("admin");
+    const { data : admin, setData : setAdmin, post:postAdmin, errors:adminErrors } = useForm({
+        email: null,
+        password: null,
+        type:'admin'
+    });
+
+    const { data : staff, setData : setStaff, post:postStaff, errors:staffErrors } = useForm({
+        email: null,
+        password: null,
+        type:'staff'
+    });
+
+    const handleStaffLogin = (e) => {
+        e.preventDefault();
+        postAdmin(route('login'));
+    }
+
+    const handleAdminLogin = (e) => {
+        e.preventDefault();
+        postAdmin(route('login'));
+    }
+
     return (
         <Layout title="Login">
             <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -57,7 +84,15 @@ export default function Login() {
                         <div className="flex justify-center space-x-4 mb-8">
                             <button
                                 onClick={(e) => setLoginType("admin")}
-                                className={classNames('flex items-center px-4 py-2 rounded-md', {'bg-blue-600 text-white' : loginType == 'admin', 'bg-gray-100 text-gray-600 hover:bg-gray-200' : loginType == 'staff'})}
+                                className={classNames(
+                                    "flex items-center px-4 py-2 rounded-md",
+                                    {
+                                        "bg-blue-600 text-white":
+                                            loginType == "admin",
+                                        "bg-gray-100 text-gray-600 hover:bg-gray-200":
+                                            loginType == "staff",
+                                    }
+                                )}
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +115,15 @@ export default function Login() {
                             </button>
                             <button
                                 onClick={(e) => setLoginType("staff")}
-                                className={classNames('flex items-center px-4 py-2 rounded-md', {'bg-blue-600 text-white' : loginType == 'staff', 'bg-gray-100 text-gray-600 hover:bg-gray-200' : loginType == 'admin'})}
+                                className={classNames(
+                                    "flex items-center px-4 py-2 rounded-md",
+                                    {
+                                        "bg-blue-600 text-white":
+                                            loginType == "staff",
+                                        "bg-gray-100 text-gray-600 hover:bg-gray-200":
+                                            loginType == "admin",
+                                    }
+                                )}
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +146,7 @@ export default function Login() {
                             </button>
                         </div>
                         {loginType == "admin" && (
-                            <form className="space-y-6">
+                            <form onSubmit={handleAdminLogin} className="space-y-6">
                                 <p className="text-sm text-gray-600 text-center mb-4">
                                     Admin access is restricted to authorized
                                     personnel only.
@@ -116,11 +159,14 @@ export default function Login() {
                                         Email address
                                     </label>
                                     <input
+                                        onChange={(e) => setAdmin('email', e.target.value)}
                                         id="email"
                                         type="email"
                                         required
+                                        value={admin.email}
                                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                     />
+                                    <InputError message={adminErrors.email} className="mt-2" />
                                 </div>
                                 <div>
                                     <label
@@ -130,11 +176,14 @@ export default function Login() {
                                         Password
                                     </label>
                                     <input
+                                        onChange={(e) => setAdmin('password', e.target.value)}
                                         id="password"
                                         type="password"
                                         required
+                                        value={admin.password}
                                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                     />
+                                    <InputError message={adminErrors.password} className="mt-2" />
                                 </div>
                                 <div>
                                     <button
@@ -155,24 +204,10 @@ export default function Login() {
                             </form>
                         )}
                         {loginType == "staff" && (
-                            <form className="space-y-6">
+                            <form onSubmit={handleStaffLogin} className="space-y-6">
                                 <p className="text-sm text-gray-600 text-center mb-4">
                                     Access training resources and documentation.
                                 </p>
-                                <div>
-                                    <label
-                                        htmlFor="name"
-                                        className="block text-sm font-medium text-gray-700"
-                                    >
-                                        Full Name
-                                    </label>
-                                    <input
-                                        id="name"
-                                        type="text"
-                                        required
-                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                                    />
-                                </div>
                                 <div>
                                     <label
                                         htmlFor="email"
@@ -181,11 +216,14 @@ export default function Login() {
                                         Email address
                                     </label>
                                     <input
+                                        onChange={(e) => setStaff('email', e.target.value)}
                                         id="email"
                                         type="email"
                                         required
+                                        value={staff.email}
                                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                     />
+                                    <InputError message={staffErrors.email} className="mt-2" />
                                 </div>
                                 <div>
                                     <label
@@ -195,11 +233,14 @@ export default function Login() {
                                         Password
                                     </label>
                                     <input
+                                        onChange={(e) => setStaff('password', e.target.value)}
                                         id="password"
                                         type="password"
                                         required
+                                        value={staff.password}
                                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                     />
+                                    <InputError message={staffErrors.password} className="mt-2" />
                                 </div>
                                 <div>
                                     <button

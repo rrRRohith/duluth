@@ -8,10 +8,10 @@ import Equipment from "./Home/Equipment";
 export default function Home() {
     return (
         <Wrapper title="Homecare System">
-            <Banner />
+            {/* <Banner /> */}
             <Services />
             <Equipment />
-            <VideoGallery />
+            {/* <VideoGallery /> */}
             <Contact />
         </Wrapper>
     );

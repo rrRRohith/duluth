@@ -3,6 +3,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class DefaultUserSeeder extends Seeder
 {
@@ -11,6 +12,16 @@ class DefaultUserSeeder extends Seeder
      */
     public function run(): void
     {
+        $adminRole = Role::firstOrCreate([
+            'name' => 'admin',
+            'guard_name' => 'web',
+        ]);
+
+        $staffRole = Role::firstOrCreate([
+            'name' => 'staff',
+            'guard_name' => 'web',
+        ]);
+
         $admin = User::firstOrCreate([
             'email' => 'admin@example.com',
         ], [
@@ -24,5 +35,8 @@ class DefaultUserSeeder extends Seeder
             'name'     => 'Staff User',
             'password' => \Illuminate\Support\Facades\Hash::make('secret'),
         ]);
+
+        $admin->assignRole($adminRole);
+        $admin->assignRole($staffRole);
     }
 }

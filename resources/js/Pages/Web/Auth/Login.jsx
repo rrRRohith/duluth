@@ -1,10 +1,49 @@
 import Layout from "../Components/Layout";
-import { Link } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
 import { useState } from "react";
 import classNames from "classnames";
+import Checkbox from "@/Components/Checkbox";
+import InputError from "@/Components/InputError";
+import InputLabel from "@/Components/InputLabel";
+import PrimaryButton from "@/Components/PrimaryButton";
+import TextInput from "@/Components/TextInput";
 
-export default function Login() {
+export default function Login({ canResetPassword }) {
     const [loginType, setLoginType] = useState("admin");
+    const {
+        data: admin,
+        setData: setAdmin,
+        post: postAdmin,
+        errors: adminErrors,
+        processing: adminProcessing,
+    } = useForm({
+        email: null,
+        password: null,
+        type: "admin",
+    });
+
+    const {
+        data: staff,
+        setData: setStaff,
+        post: postStaff,
+        errors: staffErrors,
+        processing: staffProcessing,
+    } = useForm({
+        email: null,
+        password: null,
+        type: "staff",
+    });
+
+    const handleStaffLogin = (e) => {
+        e.preventDefault();
+        postStaff(route("login"));
+    };
+
+    const handleAdminLogin = (e) => {
+        e.preventDefault();
+        postAdmin(route("login"));
+    };
+
     return (
         <Layout title="Login">
             <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -57,7 +96,15 @@ export default function Login() {
                         <div className="flex justify-center space-x-4 mb-8">
                             <button
                                 onClick={(e) => setLoginType("admin")}
-                                className={classNames('flex items-center px-4 py-2 rounded-md', {'bg-blue-600 text-white' : loginType == 'admin', 'bg-gray-100 text-gray-600 hover:bg-gray-200' : loginType == 'staff'})}
+                                className={classNames(
+                                    "flex items-center px-4 py-2 rounded-md",
+                                    {
+                                        "bg-blue-600 text-white":
+                                            loginType == "admin",
+                                        "bg-gray-100 text-gray-600 hover:bg-gray-200":
+                                            loginType == "staff",
+                                    }
+                                )}
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +127,15 @@ export default function Login() {
                             </button>
                             <button
                                 onClick={(e) => setLoginType("staff")}
-                                className={classNames('flex items-center px-4 py-2 rounded-md', {'bg-blue-600 text-white' : loginType == 'staff', 'bg-gray-100 text-gray-600 hover:bg-gray-200' : loginType == 'admin'})}
+                                className={classNames(
+                                    "flex items-center px-4 py-2 rounded-md",
+                                    {
+                                        "bg-blue-600 text-white":
+                                            loginType == "staff",
+                                        "bg-gray-100 text-gray-600 hover:bg-gray-200":
+                                            loginType == "admin",
+                                    }
+                                )}
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -103,111 +158,155 @@ export default function Login() {
                             </button>
                         </div>
                         {loginType == "admin" && (
-                            <form className="space-y-6">
+                            <form
+                                onSubmit={handleAdminLogin}
+                                className="space-y-6"
+                            >
                                 <p className="text-sm text-gray-600 text-center mb-4">
                                     Admin access is restricted to authorized
                                     personnel only.
                                 </p>
                                 <div>
-                                    <label
-                                        htmlFor="email"
-                                        className="block text-sm font-medium text-gray-700"
-                                    >
-                                        Email address
-                                    </label>
-                                    <input
-                                        id="email"
+                                    <InputLabel value="Email Address" />
+                                    <TextInput
                                         type="email"
-                                        required
-                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                        value={admin.email}
+                                        className="mt-1 block w-full"
+                                        autoComplete="username"
+                                        isFocused={true}
+                                        onChange={(e) =>
+                                            setAdmin("email", e.target.value)
+                                        }
+                                    />
+                                    <InputError
+                                        message={adminErrors.email}
+                                        className="mt-2"
                                     />
                                 </div>
-                                <div>
-                                    <label
-                                        htmlFor="password"
-                                        className="block text-sm font-medium text-gray-700"
-                                    >
-                                        Password
-                                    </label>
-                                    <input
-                                        id="password"
+                                <div className="mt-4">
+                                    <InputLabel value="Password" />
+                                    <TextInput
                                         type="password"
-                                        required
-                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                        value={admin.password}
+                                        className="mt-1 block w-full"
+                                        autoComplete="current-password"
+                                        onChange={(e) =>
+                                            setAdmin("password", e.target.value)
+                                        }
+                                    />
+                                    <InputError
+                                        message={adminErrors.password}
+                                        className="mt-2"
                                     />
                                 </div>
-                                <div>
-                                    <button
-                                        type="submit"
-                                        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                                <div className="mt-4 block">
+                                    <label className="flex items-center">
+                                        <Checkbox
+                                            name="remember"
+                                            checked={admin.remember}
+                                            onChange={(e) =>
+                                                setAdmin(
+                                                    "remember",
+                                                    e.target.checked
+                                                )
+                                            }
+                                        />
+                                        <span className="ms-2 text-sm text-gray-600">
+                                            Remember me
+                                        </span>
+                                    </label>
+                                </div>
+                                {/* {canResetPassword && (
+                                        <Link
+                                            href={route("password.request")}
+                                            className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                        >
+                                            Forgot your password?
+                                        </Link>
+                                    )}            */}
+                                <div className="mt-4">
+                                    <PrimaryButton
+                                        className="w-full"
+                                        disabled={adminProcessing}
                                     >
                                         Admin Sign In
-                                    </button>
+                                    </PrimaryButton>
                                 </div>
-                                {/* <div className="text-center mt-4">
-                                <button
-                                    type="button"
-                                    className="text-blue-600 hover:text-blue-800 text-sm font-medium"
-                                >
-                                    Create Admin Account
-                                </button>
-                            </div> */}
                             </form>
                         )}
                         {loginType == "staff" && (
-                            <form className="space-y-6">
+                            <form
+                                onSubmit={handleStaffLogin}
+                                className="space-y-6"
+                            >
                                 <p className="text-sm text-gray-600 text-center mb-4">
                                     Access training resources and documentation.
                                 </p>
                                 <div>
-                                    <label
-                                        htmlFor="name"
-                                        className="block text-sm font-medium text-gray-700"
-                                    >
-                                        Full Name
-                                    </label>
-                                    <input
-                                        id="name"
-                                        type="text"
-                                        required
-                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                                    />
-                                </div>
-                                <div>
-                                    <label
-                                        htmlFor="email"
-                                        className="block text-sm font-medium text-gray-700"
-                                    >
-                                        Email address
-                                    </label>
-                                    <input
-                                        id="email"
+                                    <InputLabel value="Email Address" />
+                                    <TextInput
                                         type="email"
-                                        required
-                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                        value={staff.email}
+                                        className="mt-1 block w-full"
+                                        autoComplete="username"
+                                        isFocused={true}
+                                        onChange={(e) =>
+                                            setStaff("email", e.target.value)
+                                        }
+                                    />
+                                    <InputError
+                                        message={staffErrors.email}
+                                        className="mt-2"
                                     />
                                 </div>
-                                <div>
-                                    <label
-                                        htmlFor="password"
-                                        className="block text-sm font-medium text-gray-700"
-                                    >
-                                        Password
-                                    </label>
-                                    <input
-                                        id="password"
+                                <div className="mt-4">
+                                    <InputLabel value="Password" />
+                                    <TextInput
                                         type="password"
-                                        required
-                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                        value={staff.password}
+                                        className="mt-1 block w-full"
+                                        autoComplete="current-password"
+                                        onChange={(e) =>
+                                            setStaff("password", e.target.value)
+                                        }
+                                    />
+                                    <InputError
+                                        message={staffErrors.password}
+                                        className="mt-2"
                                     />
                                 </div>
-                                <div>
-                                    <button
-                                        type="submit"
-                                        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                                <div className="mt-4 block">
+                                    <label className="flex items-center">
+                                        <Checkbox
+                                            name="remember"
+                                            checked={staff.remember}
+                                            onChange={(e) =>
+                                                setStaff(
+                                                    "remember",
+                                                    e.target.checked
+                                                )
+                                            }
+                                        />
+                                        <span className="ms-2 text-sm text-gray-600">
+                                            Remember me
+                                        </span>
+                                    </label>
+                                </div>
+                                {/* {canResetPassword && (
+                                    <Link
+                                        href={route("password.request")}
+                                        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                    >
+                                        Forgot your password?
+                                    </Link>
+                                )} */}
+                                <div className="mt-4">
+                                    <PrimaryButton
+                                        className="w-full"
+                                        disabled={staffProcessing}
                                     >
                                         Staff Sign In
-                                    </button>
+                                    </PrimaryButton>
                                 </div>
                             </form>
                         )}

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
@@ -30,10 +29,30 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return [
-            ...parent::share($request),
-            'auth' => [
-                'user' => $request->user(),
+             ...parent::share($request),
+            'auth'  => [
+                'user'        => $request->user() ?? null,
+                //'role'        => $request->user() ? $request->user()->getRole->only('name') ?? null : null,
+                //'permissions' => $request->user() ? $request->user()->getRole->permissions->pluck('name') ?? null : null,
+            ],
+            'flash' => [
+                'success' => fn() => $request->session()->get('success'),
+                'error'   => fn()   => $this->errors(),
             ],
         ];
+    }
+
+    /**
+     * Get the error messages from the session.
+     */
+    private function errors()
+    {
+        if (request()->session()->get('error')) {
+            return request()->session()->get('error');
+        } else if (request()->session()->get('errors')) {
+            return "Oops! There are issues with the form submission. Please ensure all fields are correctly filled.";
+        }
+
+        return null;
     }
 }

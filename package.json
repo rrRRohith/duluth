@@ -26,6 +26,7 @@
     "bootstrap-icons": "^1.11.3",
     "classnames": "^2.5.1",
     "flowbite": "^3.1.2",
-    "flowbite-react": "^0.11.5"
+    "flowbite-react": "^0.11.5",
+    "react-toastify": "^11.0.5"
   }
 }

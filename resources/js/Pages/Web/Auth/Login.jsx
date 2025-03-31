@@ -36,7 +36,7 @@ export default function Login({ canResetPassword }) {
 
     const handleStaffLogin = (e) => {
         e.preventDefault();
-        postAdmin(route("login"));
+        postStaff(route("login"));
     };
 
     const handleAdminLogin = (e) => {
@@ -292,14 +292,14 @@ export default function Login({ canResetPassword }) {
                                         </span>
                                     </label>
                                 </div>
-                                {canResetPassword && (
+                                {/* {canResetPassword && (
                                     <Link
                                         href={route("password.request")}
                                         className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                     >
                                         Forgot your password?
                                     </Link>
-                                )}
+                                )} */}
                                 <div className="mt-4">
                                     <PrimaryButton
                                         className="w-full"

@@ -1,6 +1,6 @@
 import Wrapper from "./Components/Wrapper";
 
-export default function Home() {
+export default function Dashboard() {
     return (
         <Wrapper title="Dashboard">
             <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">

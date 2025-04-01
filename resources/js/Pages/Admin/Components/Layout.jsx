@@ -4,9 +4,11 @@ import Flash from "@/Components/Flash";
 export default function Layout({ title, children }) {
     return (
         <>
-            <Flash />
-            <Head title={title}></Head>
-            {children}
+            <div className="bg-gray-50 min-h-screen">
+                <Flash />
+                <Head title={title}></Head>
+                {children}
+            </div>
         </>
     );
 }

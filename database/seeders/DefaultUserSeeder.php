@@ -25,14 +25,16 @@ class DefaultUserSeeder extends Seeder
         $admin = User::firstOrCreate([
             'email' => 'admin@example.com',
         ], [
-            'name'     => 'Admin User',
+            'first_name'     => 'Admin',
+            'last_name'      => 'User',
             'password' => \Illuminate\Support\Facades\Hash::make('secret'),
         ]);
 
         $staff = User::firstOrCreate([
             'email' => 'staff@example.com',
         ], [
-            'name'     => 'Staff User',
+            'first_name'     => 'Staff',
+            'last_name'      => 'User',
             'password' => \Illuminate\Support\Facades\Hash::make('secret'),
         ]);
 

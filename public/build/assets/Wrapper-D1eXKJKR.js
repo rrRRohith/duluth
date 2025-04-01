@@ -1,1 +1,0 @@
-import{j as r}from"./app-DvQDFyBC.js";import o from"./Layout-C0l50Qc1.js";import t from"./Nav-BDF6ARMI.js";import i from"./Aside-CNBzU8vz.js";import"./Flash-57ZfSyk7.js";function d({children:m,title:s}){return r.jsx(o,{title:s,children:r.jsxs("div",{children:[r.jsx(t,{}),r.jsx(i,{}),r.jsx("div",{className:"p-4 sm:ml-64 mt-14",children:m})]})})}export{d as default};

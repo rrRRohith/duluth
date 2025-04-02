@@ -5,8 +5,32 @@ import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import SecondaryButton from "@/Components/SecondaryButton";
 import TextInput from "@/Components/TextInput";
+import MenuBuilder from "react-dnd-menu-builder";
+import { useState } from "react";
 
 export default function Index({ menu }) {
+    const initialMenus = [
+        {
+            id: "Home",
+            name: "Home",
+            href: "/home",
+            children: [],
+        },
+        {
+            id: "Collections",
+            href: "/collections",
+            name: "Collections",
+            children: [
+                {
+                    id: "Spring",
+                    name: "Spring",
+                    href: "/spring",
+                    children: [],
+                },
+            ],
+        },
+    ];
+
     const { data, setData, post, errors, processing } = useForm({
         title: menu?.title,
         _method: menu ? "PUT" : "POST",
@@ -19,6 +43,17 @@ export default function Index({ menu }) {
                 ? route("admin.menus.update", menu.id)
                 : route("admin.menus.store")
         );
+    };
+
+    const [menus, setMenus] = useState(initialMenus);
+
+    const addMenu = () => {
+        setMenus([
+            ...menus,
+            {
+                id: Math.random().toString(36).substring(7),
+            },
+        ]);
     };
 
     return (
@@ -41,17 +76,6 @@ export default function Index({ menu }) {
                 </div>
                 <div className="mt-6 space-y-6">
                     <div className="max-w-xl">
-                        <header>
-                            <h2 className="text-lg font-medium text-gray-900">
-                                Profile Information
-                            </h2>
-
-                            <p className="mt-1 text-sm text-gray-600">
-                                Update your account's profile information and
-                                email address.
-                            </p>
-                        </header>
-
                         <form onSubmit={submit} className="mt-6 space-y-6">
                             <div>
                                 <InputLabel value="Title" />
@@ -70,6 +94,27 @@ export default function Index({ menu }) {
                                     className="mt-2"
                                     message={errors.title}
                                 />
+                            </div>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                }}
+                            >
+                                <MenuBuilder
+                                    items={menus}
+                                    setItems={setMenus}
+                                />
+                            </div>
+                            <div className="">
+                            <SecondaryButton
+                                    type="button"
+                                    onClick={() => {
+                                        addMenu();
+                                    }}
+                                >
+                                    Add Menu
+                                </SecondaryButton>
                             </div>
                             <div className="flex items-center gap-4">
                                 <Link href={route("admin.menus.index")}>

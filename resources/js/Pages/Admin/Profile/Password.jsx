@@ -46,7 +46,7 @@ export default function Password() {
     };
 
     return (
-        <Wrapper title={"Password"}>
+        <Wrapper title="Change Password">
             <section className="max-w-xl">
                 <header>
                     <h2 className="text-lg font-medium text-gray-900">

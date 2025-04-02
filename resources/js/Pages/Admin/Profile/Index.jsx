@@ -2,8 +2,7 @@ import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
-import { Transition } from "@headlessui/react";
-import { Link, useForm, usePage } from "@inertiajs/react";
+import { useForm } from "@inertiajs/react";
 import Wrapper from "../Components/Wrapper";
 
 export default function Profile({ user }) {
@@ -22,7 +21,7 @@ export default function Profile({ user }) {
     };
 
     return (
-        <Wrapper title={"Profile"}>
+        <Wrapper title="Profle">
             <section className="max-w-xl">
                 <header>
                     <h2 className="text-lg font-medium text-gray-900">

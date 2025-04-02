@@ -1,5 +1,5 @@
 import PrimaryButton from "@/Components/PrimaryButton";
-import { Link } from "@inertiajs/react";
+import { Link, router } from "@inertiajs/react";
 import Wrapper from "../Components/Wrapper";
 import ActionButton from "@/Components/ActionButton";
 
@@ -37,8 +37,8 @@ export default function Index({ menus }) {
                             </thead>
                             <tbody>
                                 {menus && menus.length > 0 ? (
-                                    menus.map((menu) => (
-                                        <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                    menus.map((menu, index) => (
+                                        <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
                                             <th
                                                 scope="row"
                                                 className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -56,16 +56,13 @@ export default function Index({ menus }) {
                                                         <i className="bi bi-pencil m-auto text-lg"></i>
                                                     </ActionButton>
                                                 </Link>
-                                                <Link
-                                                    href={route(
-                                                        "admin.menus.destroy",
-                                                        menu.id
-                                                    )}
+                                                <a
+                                                    onClick={(e) => { e.preventDefault(); router.delete(route("admin.menus.destroy", menu.id)) }}
                                                 >
                                                     <ActionButton>
                                                         <i className="bi bi-trash m-auto text-lg"></i>
                                                     </ActionButton>
-                                                </Link>
+                                                </a>
                                             </td>
                                         </tr>
                                     ))

@@ -11,4 +11,7 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
 
     Route::get('/password',  'App\Http\Controllers\Admin\ProfileController@password')->name('password');
     Route::put('/password',  'App\Http\Controllers\Admin\ProfileController@updatePassword')->name('password.update');
+
+    Route::resource('/menus',  App\Http\Controllers\Admin\MenuController::class)
+        ->except(['show']);
 });

@@ -27,7 +27,7 @@ class DefaultUserSeeder extends Seeder
         ], [
             'first_name'     => 'Admin',
             'last_name'      => 'User',
-            'password' => \Illuminate\Support\Facades\Hash::make('secret'),
+            'password' => 'secret',
         ]);
 
         $staff = User::firstOrCreate([
@@ -35,7 +35,7 @@ class DefaultUserSeeder extends Seeder
         ], [
             'first_name'     => 'Staff',
             'last_name'      => 'User',
-            'password' => \Illuminate\Support\Facades\Hash::make('secret'),
+            'password' => 'secret',
         ]);
 
         $admin->assignRole($adminRole);

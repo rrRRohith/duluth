@@ -6,6 +6,7 @@ use App\Models\Menu;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\MenuResource;
 use App\Http\Requests\Admin\MenuRequest;
 
 class MenuController extends Controller
@@ -39,6 +40,8 @@ class MenuController extends Controller
                 'handle',
                 'link',
             ]));
+            // Process the items
+            $this->updateMenuItems($menu, $request->input('items'));
         });
 
         return redirect()
@@ -57,7 +60,7 @@ class MenuController extends Controller
     public function edit(Menu $menu)
     {
         return Inertia::render('Admin/Menus/Form', [
-            'menu' => $menu,
+            'menu' => new MenuResource($menu),
         ]);
     }
 
@@ -67,16 +70,45 @@ class MenuController extends Controller
     public function update(MenuRequest $request, Menu $menu)
     {
         \DB::transaction(function () use ($request, $menu) {
+            // Update the menu
             $menu->update($request->only([
                 'title',
                 'handle',
-                'link',
             ]));
+
+            // Process the items
+            $this->updateMenuItems($menu, $request->input('items'));
         });
 
         return redirect()
             ->route('admin.menus.index')
             ->withSuccess(__('Menu updated successfully.'));
+    }
+
+    /**
+     * Update menu items recursively.
+     */
+    private function updateMenuItems(Menu $menu, array $items)
+    {
+        // Delete items that are not in the request
+        $menu->children()->whereNotIn('id', array_column($items, 'id'))->delete();
+        // Create or update items
+        foreach ($items ?? [] as $item) {
+            $menuItem = $menu->children()->updateOrCreate(
+                ['id' => $item['id'] ?? null],
+                [
+                    'title' => $item['title'] ?? null,
+                    'link' => $item['link'] ?? null,
+                    'icon' => $item['icon'] ?? null,
+                ]
+            );
+
+            if (!empty($item['children'])) {
+                $this->updateMenuItems($menuItem, $item['children']);
+            }else{
+                $menuItem->children()->delete();
+            }
+        }
     }
 
     /**

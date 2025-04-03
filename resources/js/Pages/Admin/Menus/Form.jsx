@@ -5,35 +5,26 @@ import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import SecondaryButton from "@/Components/SecondaryButton";
 import TextInput from "@/Components/TextInput";
-import MenuBuilder from "react-dnd-menu-builder";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import Swal from "sweetalert2";
+import Menu from "./Menu";
 
 export default function Index({ menu }) {
-    const initialMenus = [
+    
+    const initialItems = [
         {
-            id: "Home",
-            name: "Home",
-            href: "/home",
+            id: uuidv4(),
+            title: "",
+            icon: "",
+            link: "",
             children: [],
         },
-        {
-            id: "Collections",
-            href: "/collections",
-            name: "Collections",
-            children: [
-                {
-                    id: "Spring",
-                    name: "Spring",
-                    href: "/spring",
-                    children: [],
-                },
-            ],
-        },
     ];
-
     const { data, setData, post, errors, processing } = useForm({
         title: menu?.title,
         _method: menu ? "PUT" : "POST",
+        items:menu?.children || initialItems
     });
 
     const submit = (e) => {
@@ -45,15 +36,73 @@ export default function Index({ menu }) {
         );
     };
 
-    const [menus, setMenus] = useState(initialMenus);
 
-    const addMenu = () => {
-        setMenus([
-            ...menus,
-            {
-                id: Math.random().toString(36).substring(7),
-            },
-        ]);
+    const handleAddItem = () => {
+        const newItem = {
+            id: uuidv4(),
+            title: "",
+            link: "",
+            icon: "",
+            children: [],
+        };
+        setData("items", [...data.items, newItem]);
+    };
+
+    const handleAddChildItem = (parentId) => {
+        const newItem = {
+            id: uuidv4(),
+            title: "",
+            icon: "",
+            link: "",
+            children: [],
+        };
+
+        const addChildToParent = (items, parentId) => {
+            return items.map((item) => {
+                if (item.id === parentId) {
+                    return { ...item, children: [...item.children, newItem] };
+                } else if (item.children && item.children.length) {
+                    return {
+                        ...item,
+                        children: addChildToParent(item.children, parentId),
+                    };
+                }
+                return item;
+            });
+        };
+
+        setData("items", addChildToParent(data.items, parentId));
+    };
+
+    const handleDeleteItem = (id) => {
+        const deleteItem = (items, id) => {
+            return items
+                .filter((item) => item.id !== id)
+                .map((item) => {
+                    if (item.children && item.children.length) {
+                        return {
+                            ...item,
+                            children: deleteItem(item.children, id),
+                        };
+                    }
+                    return item;
+                });
+        };
+        setData("items", deleteItem(data.items, id));
+    };
+
+    const handleChangeItem = (id, updatedItem) => {
+        const updateItem = (items, id) => {
+            return items.map((item) => {
+                if (item.id === id) {
+                    return { ...item, ...updatedItem };
+                } else if (item.children && item.children.length) {
+                    return { ...item, children: updateItem(item.children, id) };
+                }
+                return item;
+            });
+        };
+        setData("items", updateItem(data.items, id));
     };
 
     return (
@@ -95,26 +144,16 @@ export default function Index({ menu }) {
                                     message={errors.title}
                                 />
                             </div>
-                            <div
-                                style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                }}
-                            >
-                                <MenuBuilder
-                                    items={menus}
-                                    setItems={setMenus}
+                            <div>
+                                <Menu
+                                    items={data.items}
+                                    onAddItem={handleAddItem}
+                                    onAddChildItem={handleAddChildItem}
+                                    onDeleteItem={handleDeleteItem}
+                                    onChangeItem={handleChangeItem}
+                                    landingPage={[]}
+                                    formErrors={errors}
                                 />
-                            </div>
-                            <div className="">
-                            <SecondaryButton
-                                    type="button"
-                                    onClick={() => {
-                                        addMenu();
-                                    }}
-                                >
-                                    Add Menu
-                                </SecondaryButton>
                             </div>
                             <div className="flex items-center gap-4">
                                 <Link href={route("admin.menus.index")}>

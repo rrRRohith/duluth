@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('parent_id')->unsigned()->nullable();
             $table->foreign('parent_id')->references('id')->on('menus')->onDelete("cascade");
             $table->mediumText('link')->nullable();
+            $table->mediumText('icon')->nullable();
             $table->integer('position')->nullable();
             $table->softDeletes();
             $table->timestamps();

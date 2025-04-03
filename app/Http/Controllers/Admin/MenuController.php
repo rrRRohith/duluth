@@ -90,6 +90,9 @@ class MenuController extends Controller
      */
     private function updateMenuItems(Menu $menu, array $items)
     {
+        // Delete items that are not in the request
+        $menu->children()->whereNotIn('id', array_column($items, 'id'))->delete();
+        // Create or update items
         foreach ($items ?? [] as $item) {
             $menuItem = $menu->children()->updateOrCreate(
                 ['id' => $item['id'] ?? null],

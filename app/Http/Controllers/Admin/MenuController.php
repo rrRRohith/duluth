@@ -105,6 +105,8 @@ class MenuController extends Controller
 
             if (!empty($item['children'])) {
                 $this->updateMenuItems($menuItem, $item['children']);
+            }else{
+                $menuItem->children()->delete();
             }
         }
     }

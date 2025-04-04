@@ -3,22 +3,22 @@ import { Link, router } from "@inertiajs/react";
 import Wrapper from "../Components/Wrapper";
 import ActionButton from "@/Components/ActionButton";
 
-export default function Index({ menus }) {
+export default function Index({ users }) {
     return (
         <Wrapper title="Menus">
             <section>
                 <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between">
                     <header>
                         <h2 className="text-lg font-medium text-gray-900">
-                            Navigation menus
+                            Staff users
                         </h2>
                         <p className="mt-1 text-sm text-gray-600">
-                            Manage site navigations and links
+                            Manage your staff users and login credentials.
                         </p>
                     </header>
                     <div className="mt-4 sm:mt-0">
-                        <Link href={route("admin.menus.create")}>
-                            <PrimaryButton>Create new menu</PrimaryButton>
+                        <Link href={route("admin.users.create")}>
+                            <PrimaryButton>Create new staff</PrimaryButton>
                         </Link>
                     </div>
                 </div>
@@ -28,10 +28,16 @@ export default function Index({ menus }) {
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
-                                        Menu Name
+                                        Name
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-                                        Handle
+                                        Email
+                                    </th>
+                                    <th scope="col" className="px-6 py-3">
+                                        Phone
+                                    </th>
+                                    <th scope="col" className="px-6 py-3">
+                                        Role
                                     </th>
                                     <th scope="col" className="px-6 py-3">
                                         Actions
@@ -39,21 +45,30 @@ export default function Index({ menus }) {
                                 </tr>
                             </thead>
                             <tbody>
-                                {menus && menus.length > 0 ? (
-                                    menus.map((menu, index) => (
-                                        <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                {users && users.length > 0 ? (
+                                    users.map((user, index) => (
+                                        <tr
+                                            key={index}
+                                            className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200"
+                                        >
                                             <td className="px-6 py-4">
-                                                {menu.title}
+                                                {user.name}
                                             </td>
                                             <td className="px-6 py-4">
-                                                {menu.handle}
+                                                {user.email}
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                {user.phone}
+                                            </td>
+                                            <td className="px-6 py-4 capitalize">
+                                                {user.role_names}
                                             </td>
                                             <td className="px-6 py-4">
                                                 <div className="flex space-x-4">
                                                     <Link
                                                         href={route(
-                                                            "admin.menus.edit",
-                                                            menu.id
+                                                            "admin.users.edit",
+                                                            user.id
                                                         )}
                                                     >
                                                         <ActionButton>
@@ -61,7 +76,15 @@ export default function Index({ menus }) {
                                                         </ActionButton>
                                                     </Link>
                                                     <a
-                                                        onClick={(e) => { e.preventDefault(); router.delete(route("admin.menus.destroy", menu.id)) }}
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            router.delete(
+                                                                route(
+                                                                    "admin.users.destroy",
+                                                                    user.id
+                                                                )
+                                                            );
+                                                        }}
                                                     >
                                                         <ActionButton>
                                                             <i className="bi bi-trash m-auto text-lg"></i>

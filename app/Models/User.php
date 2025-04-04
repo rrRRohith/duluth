@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    const ROLE_ADMIN = 'admin';
+    const ADMIN_ROLE = 'admin';
     const STAFF_ROLES = [
         'staff',
         'supervisor',
@@ -23,6 +23,7 @@ class User extends Authenticatable
 
     protected $appends = [
         'name',
+        'role_names',
     ];
 
     /**
@@ -76,5 +77,10 @@ class User extends Authenticatable
         return $q->whereHas('roles', function ($q) {
             $q->whereIn('name', self::STAFF_ROLES);
         });
+    }
+
+    public function getRoleNamesAttribute(): string
+    {
+        return $this->roles->pluck('name')->join(', ');
     }
 }

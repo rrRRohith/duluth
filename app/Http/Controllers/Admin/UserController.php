@@ -28,7 +28,7 @@ class UserController extends Controller
     public function create()
     {
         return inertia('Admin/Users/Form', [
-            'roles' => Role::whereIn('name', User::STAFF_ROLES)->get(),
+            'roles' => Role::whereIn('name', User::STAFF_ROLES)->selectRaw("id as value, name as label")->get()->toArray(),
         ]);
     }
 
@@ -70,8 +70,8 @@ class UserController extends Controller
         abort_if($this->user->id == $user->id || $user->hasRole(User::ADMIN_ROLE), 403);
 
         return inertia('Admin/Users/Form', [
-            'user' => $user,
-            'roles' => Role::whereIn('name', User::STAFF_ROLES)->get(),
+            'user' => $user->append(['role_ids']),
+            'roles' => Role::whereIn('name', User::STAFF_ROLES)->selectRaw("id as value, name as label")->get()->toArray(),
         ]);
     }
 

@@ -5,10 +5,9 @@ import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import SecondaryButton from "@/Components/SecondaryButton";
 import TextInput from "@/Components/TextInput";
+import Select from "react-select";
 
-
-export default function Index({ user }) {
-    
+export default function Index({ user, roles }) {
     const { data, setData, post, errors, processing } = useForm({
         first_name: user?.first_name,
         last_name: user?.last_name,
@@ -19,6 +18,8 @@ export default function Index({ user }) {
         role: user?.role,
         _method: user ? "PUT" : "POST",
     });
+
+    const selectedRole = roles.find((role) => role.value == data.role);
 
     const submit = (e) => {
         e.preventDefault();
@@ -123,12 +124,10 @@ export default function Index({ user }) {
                             <div className="mb-4">
                                 <InputLabel value="Role" />
 
-                                <TextInput
-                                    className="mt-1 block w-full"
-                                    value={data.role}
-                                    onChange={(e) =>
-                                        setData("role", e.target.value)
-                                    }
+                                <Select
+                                    options={roles}
+                                    defaultValue={selectedRole}
+                                    onChange={(e) => setData("role", e.value)}
                                     required
                                 />
 
@@ -176,7 +175,7 @@ export default function Index({ user }) {
                                     message={errors.password_confirmation}
                                 />
                             </div>
-                            
+
                             <div className="flex items-center gap-4">
                                 <Link href={route("admin.users.index")}>
                                     <SecondaryButton type="button">

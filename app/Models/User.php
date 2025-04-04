@@ -24,6 +24,7 @@ class User extends Authenticatable
     protected $appends = [
         'name',
         'role_names',
+        //'role_ids',
     ];
 
     /**
@@ -82,5 +83,10 @@ class User extends Authenticatable
     public function getRoleNamesAttribute(): string
     {
         return $this->roles->pluck('name')->join(', ');
+    }
+
+    public function getRoleIdsAttribute(): array
+    {
+        return $this->roles->pluck('id')->toArray();
     }
 }

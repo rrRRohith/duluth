@@ -10,6 +10,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    const ROLE_ADMIN = 'admin';
+    const STAFF_ROLES = [
+        'staff',
+        'supervisor',
+        'manager',
+    ];
+
     use HasRoles;
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -62,5 +69,12 @@ class User extends Authenticatable
     public function setPasswordAttribute(string $value): void
     {
         $this->attributes['password'] = \Illuminate\Support\Facades\Hash::make($value);
+    }
+    
+    public function scopeStaffs($q)
+    {
+        return $q->whereHas('roles', function ($q) {
+            $q->whereIn('name', self::STAFF_ROLES);
+        });
     }
 }

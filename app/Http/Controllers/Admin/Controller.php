@@ -7,7 +7,20 @@ use Illuminate\Http\Request;
 
 class Controller extends BaseController
 {
-    
+    public $user;
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware(function (Request $request, $next) {
+            $this->user = $request->user();
+            return $next($request);
+        });
+    }
     /**
      * Display the admin dashboard.
      *

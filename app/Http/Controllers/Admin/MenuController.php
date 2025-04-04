@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Menu;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\Controller;
 use App\Http\Resources\MenuResource;
 use App\Http\Requests\Admin\MenuRequest;
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\Controller;
 use App\Http\Requests\Admin\PasswordRequest;
 use App\Http\Requests\Admin\ProfileRequest;
 
@@ -15,7 +15,7 @@ class ProfileController extends Controller
     public function profile()
     {
         return inertia('Admin/Profile/Index', [
-            'user' => auth()->user(),
+            'user' => $this->user,
         ]);
     }
 
@@ -25,7 +25,7 @@ class ProfileController extends Controller
     public function updateProfile(ProfileRequest $request)
     {
 
-        auth()->user()->update($request->validated());
+        $this->user->update($request->validated());
         return redirect()->route('admin.profile')->withSuccess(__('Profile updated successfully.'));
     }
 
@@ -42,7 +42,7 @@ class ProfileController extends Controller
      */
     public function updatePassword(PasswordRequest $request)
     {
-        auth()->user()->update($request->only('password'));
+        $this->user->update($request->only('password'));
         return redirect()->route('admin.password')->withSuccess(__('Password updated successfully.'));
     }
 }

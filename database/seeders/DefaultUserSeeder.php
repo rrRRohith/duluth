@@ -39,6 +39,6 @@ class DefaultUserSeeder extends Seeder
         ]);
 
         $admin->assignRole($adminRole);
-        $admin->assignRole($staffRole);
+        $staff->assignRole($staffRole);
     }
 }

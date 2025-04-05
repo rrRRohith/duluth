@@ -17,4 +17,7 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
 
     Route::resource('/users',  App\Http\Controllers\Admin\UserController::class)
         ->except(['show']);
+
+    Route::resource('/pages',  App\Http\Controllers\Admin\PageController::class)
+        ->except(['show']);
 });

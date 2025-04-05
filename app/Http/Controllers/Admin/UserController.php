@@ -37,21 +37,25 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        \DB::transaction(function () use ($request) {
-            $user = User::create($request->only([
-                'first_name',
-                'last_name',
-                'phone',
-                'email',
-                'password',
-            ]));
-
-            $user->syncRoles($request->input('role'));
-        });
-
-        return redirect()
-            ->route('admin.users.index')
-            ->withSuccess(__('User created successfully.'));
+        try {
+            \DB::transaction(function () use ($request) {
+                $user = User::create($request->only([
+                    'first_name',
+                    'last_name',
+                    'phone',
+                    'email',
+                    'password',
+                ]));
+    
+                $user->syncRoles($request->input('role'));
+            });
+    
+            return redirect()
+                ->route('admin.users.index')
+                ->withSuccess(__('User created successfully.'));
+        } catch (\Exception $e) {
+            return $this->error($e);
+        }
     }
 
     /**
@@ -82,26 +86,24 @@ class UserController extends Controller
     {
         abort_if($this->user->id == $user->id || $user->hasRole(User::ADMIN_ROLE), 403);
 
-        \DB::transaction(function () use ($request, $user) {
-            $user->update($request->only([
-                'first_name',
-                'last_name',
-                'phone',
-                'email',
-                //'password',
-            ]));
-
-            // Only update the password if it is present in the request
-            if ($request->filled('password')) {
-                $user->update($request->only('password'));
-            }
-
-            $user->syncRoles($request->input('role'));
-        });
-
-        return redirect()
-            ->route('admin.users.index')
-            ->withSuccess(__('User updated successfully.'));
+        try {
+            \DB::transaction(function () use ($request, $user) {
+                $user->update($request->only([
+                    'first_name',
+                    'last_name',
+                    'phone',
+                    'email',
+                ]));
+    
+                $user->syncRoles($request->input('role'));
+            });
+    
+            return redirect()
+                ->route('admin.users.index')
+                ->withSuccess(__('User updated successfully.'));
+        } catch (\Exception $e) {
+            return $this->error($e);
+        }
     }
 
     /**

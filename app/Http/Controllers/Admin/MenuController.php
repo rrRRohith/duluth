@@ -34,19 +34,23 @@ class MenuController extends Controller
      */
     public function store(MenuRequest $request)
     {
-        \DB::transaction(function () use ($request) {
-            $menu = Menu::create($request->only([
-                'title',
-                'handle',
-                'link',
-            ]));
-            // Process the items
-            $this->updateMenuItems($menu, $request->input('items'));
-        });
+        try {
+            \DB::transaction(function () use ($request) {
+                $menu = Menu::create($request->only([
+                    'title',
+                    'handle',
+                    'link',
+                ]));
+                // Process the items
+                $this->updateMenuItems($menu, $request->input('items'));
+            });
 
-        return redirect()
-            ->route('admin.menus.index')
-            ->withSuccess(__('Menu created successfully.'));
+            return redirect()
+                ->route('admin.menus.index')
+                ->withSuccess(__('Menu created successfully.'));
+        } catch (\Exception $e) {
+            return $this->error($e);
+        }
     }
 
     /**
@@ -69,20 +73,24 @@ class MenuController extends Controller
      */
     public function update(MenuRequest $request, Menu $menu)
     {
-        \DB::transaction(function () use ($request, $menu) {
-            // Update the menu
-            $menu->update($request->only([
-                'title',
-                'handle',
-            ]));
+        try {
+            \DB::transaction(function () use ($request, $menu) {
+                // Update the menu
+                $menu->update($request->only([
+                    'title',
+                    'handle',
+                ]));
 
-            // Process the items
-            $this->updateMenuItems($menu, $request->input('items'));
-        });
+                // Process the items
+                $this->updateMenuItems($menu, $request->input('items'));
+            });
 
-        return redirect()
-            ->route('admin.menus.index')
-            ->withSuccess(__('Menu updated successfully.'));
+            return redirect()
+                ->route('admin.menus.index')
+                ->withSuccess(__('Menu updated successfully.'));
+        } catch (\Exception $e) {
+            return $this->error($e);
+        }
     }
 
     /**
@@ -105,7 +113,7 @@ class MenuController extends Controller
 
             if (!empty($item['children'])) {
                 $this->updateMenuItems($menuItem, $item['children']);
-            }else{
+            } else {
                 $menuItem->children()->delete();
             }
         }

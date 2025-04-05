@@ -3,22 +3,22 @@ import { Link, router } from "@inertiajs/react";
 import Wrapper from "../Components/Wrapper";
 import ActionButton from "@/Components/ActionButton";
 
-export default function Index({ users }) {
+export default function Index({ pages }) {
     return (
-        <Wrapper title="Users">
+        <Wrapper title="Pages">
             <section>
                 <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between">
                     <header>
                         <h2 className="text-lg font-medium text-gray-900">
-                            Staff users
+                            Content pages
                         </h2>
                         <p className="mt-1 text-sm text-gray-600">
-                            Manage your staff users and login credentials.
+                            Manage your site content pages.
                         </p>
                     </header>
                     <div className="mt-4 sm:mt-0">
-                        <Link href={route("admin.users.create")}>
-                            <PrimaryButton>Create new staff</PrimaryButton>
+                        <Link href={route("admin.pages.create")}>
+                            <PrimaryButton>Create page</PrimaryButton>
                         </Link>
                     </div>
                 </div>
@@ -28,16 +28,16 @@ export default function Index({ users }) {
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
-                                        Name
+                                        Title
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-                                        Email
+                                        Handle
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-                                        Phone
+                                        Status
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-                                        Role
+                                        Last updated
                                     </th>
                                     <th scope="col" className="px-6 py-3">
                                         Actions
@@ -45,30 +45,30 @@ export default function Index({ users }) {
                                 </tr>
                             </thead>
                             <tbody>
-                                {users && users.length > 0 ? (
-                                    users.map((user, index) => (
+                                {pages && pages.length > 0 ? (
+                                    pages.map((page, index) => (
                                         <tr
                                             key={index}
                                             className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200"
                                         >
                                             <td className="px-6 py-4">
-                                                {user.name}
+                                                {page.title}
                                             </td>
                                             <td className="px-6 py-4">
-                                                {user.email}
+                                                <a href="#">{page.handle}</a>
                                             </td>
                                             <td className="px-6 py-4">
-                                                {user.phone}
+                                                {page.status}
                                             </td>
                                             <td className="px-6 py-4 capitalize">
-                                                {user.role_names}
+                                                {page.created_at}
                                             </td>
                                             <td className="px-6 py-4">
                                                 <div className="flex space-x-4">
                                                     <Link
                                                         href={route(
-                                                            "admin.users.edit",
-                                                            user.id
+                                                            "admin.pages.edit",
+                                                            page.id
                                                         )}
                                                     >
                                                         <ActionButton>
@@ -80,8 +80,8 @@ export default function Index({ users }) {
                                                             e.preventDefault();
                                                             router.delete(
                                                                 route(
-                                                                    "admin.users.destroy",
-                                                                    user.id
+                                                                    "admin.pages.destroy",
+                                                                    page.id
                                                                 )
                                                             );
                                                         }}

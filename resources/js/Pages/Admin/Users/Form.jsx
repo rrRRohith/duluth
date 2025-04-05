@@ -15,11 +15,12 @@ export default function Index({ user, roles }) {
         phone: user?.phone,
         password: "",
         password_confirmation: "",
+        role_ids:user?.role_ids || [],
         role: user?.role,
         _method: user ? "PUT" : "POST",
     });
 
-    const selectedRole = roles.find((role) => role.value == data.role);
+    const selectedRole = roles.find((role) => data.role_ids.includes(role.value));
 
     const submit = (e) => {
         e.preventDefault();

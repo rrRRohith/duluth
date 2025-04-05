@@ -66,7 +66,7 @@ export default function Aside() {
                         <ul id="users" class="hidden py-2 space-y-2">
                             <li>
                                 <Link
-                                    href={route("admin.menus.index")}
+                                    href={route("admin.users.index")}
                                     class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
                                     All users
@@ -74,7 +74,7 @@ export default function Aside() {
                             </li>
                             <li>
                                 <Link
-                                    href={route("admin.menus.create")}
+                                    href={route("admin.users.create")}
                                     class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
                                     New user

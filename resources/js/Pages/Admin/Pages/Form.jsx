@@ -6,46 +6,52 @@ import InputLabel from "@/Components/InputLabel";
 import SecondaryButton from "@/Components/SecondaryButton";
 import TextInput from "@/Components/TextInput";
 import Select from "react-select";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import { useState, useEffect, use } from "react";
 
-export default function Index({ user, roles }) {
+export default function Index({ page }) {
     const { data, setData, post, errors, processing } = useForm({
-        first_name: user?.first_name,
-        last_name: user?.last_name,
-        email: user?.email,
-        phone: user?.phone,
-        password: "",
-        password_confirmation: "",
-        role_ids:user?.role_ids || [],
-        role: user?.role,
-        _method: user ? "PUT" : "POST",
+        title: page?.title,
+        handle: page?.handle,
+        status: page?.status,
+        content: page?.content,
+        meta_title: page?.meta_title,
+        meta_description: page?.meta_description,
+        meta_keywords: page?.meta_keywords,
+        _method: page ? "PUT" : "POST",
     });
 
-    const selectedRole = roles.find((role) => data.role_ids.includes(role.value));
+    const [content, setContent] = useState(data.content);
+
+    useEffect((e) => {
+        setData('content', content);
+    }, [content])
 
     const submit = (e) => {
         e.preventDefault();
         post(
-            user
-                ? route("admin.users.update", user.id)
-                : route("admin.users.store")
+            page
+                ? route("admin.pages.update", page.id)
+                : route("admin.pages.store")
         );
     };
 
     return (
-        <Wrapper title={user ? "Edit user" : "Create new user"}>
+        <Wrapper title={page ? "Edit page" : "Create new page"}>
             <section>
                 <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between">
                     <header>
                         <h2 className="text-lg font-medium text-gray-900">
-                            {user ? "Edit user" : "Create new user"}
+                            {page ? "Edit page" : "Create new page"}
                         </h2>
                         <p className="mt-1 text-sm text-gray-600">
-                            Manage site navigations and links
+                            Manage your site content pages.
                         </p>
                     </header>
                     <div className="mt-4 sm:mt-0">
-                        <Link href={route("admin.users.index")}>
-                            <PrimaryButton>Back to users</PrimaryButton>
+                        <Link href={route("admin.pages.index")}>
+                            <PrimaryButton>Back to pages</PrimaryButton>
                         </Link>
                     </div>
                 </div>
@@ -53,13 +59,12 @@ export default function Index({ user, roles }) {
                     <div className="max-w-xl">
                         <form onSubmit={submit} className="mt-6 space-y-6">
                             <div className="mb-4">
-                                <InputLabel value="First name" />
-
+                                <InputLabel value="Title" />
                                 <TextInput
                                     className="mt-1 block w-full"
-                                    value={data.first_name}
+                                    value={data.title}
                                     onChange={(e) =>
-                                        setData("first_name", e.target.value)
+                                        setData("title", e.target.value)
                                     }
                                     required
                                     isFocused
@@ -67,118 +72,102 @@ export default function Index({ user, roles }) {
 
                                 <InputError
                                     className="mt-2"
-                                    message={errors.first_name}
+                                    message={errors.title}
                                 />
                             </div>
-
                             <div className="mb-4">
-                                <InputLabel value="Last name" />
+                                <InputLabel value="Content" />
+
+                                <ReactQuill
+                                    theme="snow"
+                                    value={content}
+                                    onChange={setContent}
+                                    style={{ height: "200px" }}
+                                />
+
+                                <InputError
+                                    className="mt-2"
+                                    message={errors.content}
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <InputLabel value="Meta title" />
 
                                 <TextInput
                                     className="mt-1 block w-full"
-                                    value={data.last_name}
+                                    value={data.meta_title}
                                     onChange={(e) =>
-                                        setData("last_name", e.target.value)
+                                        setData("meta_title", e.target.value)
                                     }
-                                    required
                                 />
 
                                 <InputError
                                     className="mt-2"
-                                    message={errors.last_name}
+                                    message={errors.meta_title}
                                 />
                             </div>
                             <div className="mb-4">
-                                <InputLabel value="Email" />
+                                <InputLabel value="Meta description" />
 
                                 <TextInput
                                     className="mt-1 block w-full"
-                                    value={data.email}
-                                    onChange={(e) =>
-                                        setData("email", e.target.value)
-                                    }
-                                    required
-                                />
-
-                                <InputError
-                                    className="mt-2"
-                                    message={errors.email}
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <InputLabel value="Phone" />
-
-                                <TextInput
-                                    className="mt-1 block w-full"
-                                    value={data.phone}
-                                    onChange={(e) =>
-                                        setData("phone", e.target.value)
-                                    }
-                                    required
-                                />
-
-                                <InputError
-                                    className="mt-2"
-                                    message={errors.phone}
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <InputLabel value="Role" />
-
-                                <Select
-                                    options={roles}
-                                    defaultValue={selectedRole}
-                                    onChange={(e) => setData("role", e.value)}
-                                    required
-                                />
-
-                                <InputError
-                                    className="mt-2"
-                                    message={errors.role}
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <InputLabel value="Password" />
-
-                                <TextInput
-                                    type="password"
-                                    className="mt-1 block w-full"
-                                    value={data.password}
-                                    onChange={(e) =>
-                                        setData("password", e.target.value)
-                                    }
-                                    required={user ? false : true}
-                                />
-
-                                <InputError
-                                    className="mt-2"
-                                    message={errors.password}
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <InputLabel value="Confirm Password" />
-
-                                <TextInput
-                                    type="password"
-                                    className="mt-1 block w-full"
-                                    value={data.password_confirmation}
+                                    value={data.meta_description}
                                     onChange={(e) =>
                                         setData(
-                                            "password_confirmation",
+                                            "meta_description",
                                             e.target.value
                                         )
                                     }
-                                    required={user ? false : true}
                                 />
 
                                 <InputError
                                     className="mt-2"
-                                    message={errors.password_confirmation}
+                                    message={errors.meta_description}
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <InputLabel value="Meta keywords" />
+
+                                <TextInput
+                                    className="mt-1 block w-full"
+                                    value={data.meta_keywords}
+                                    onChange={(e) =>
+                                        setData("meta_keywords", e.target.value)
+                                    }
+                                />
+
+                                <InputError
+                                    className="mt-2"
+                                    message={errors.meta_keywords}
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <InputLabel value="Status" />
+
+                                <Select
+                                    className="mt-1 block w-full"
+                                    options={[
+                                        { value: "draft", label: "draft" },
+                                        {
+                                            value: "published",
+                                            label: "published",
+                                        },
+                                    ]}
+                                    defaultValue={{
+                                        value: page?.status,
+                                        label: page?.status,
+                                    }}
+                                    onChange={(e) => setData("status", e.value)}
+                                />
+
+                                <InputError
+                                    className="mt-2"
+                                    message={errors.status}
                                 />
                             </div>
 
                             <div className="flex items-center gap-4">
-                                <Link href={route("admin.users.index")}>
+                                <Link href={route("admin.pages.index")}>
                                     <SecondaryButton type="button">
                                         Cancel
                                     </SecondaryButton>

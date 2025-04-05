@@ -6,6 +6,9 @@ import InputLabel from "@/Components/InputLabel";
 import SecondaryButton from "@/Components/SecondaryButton";
 import TextInput from "@/Components/TextInput";
 import Select from "react-select";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import { useState, useEffect, use } from "react";
 
 export default function Index({ page }) {
     const { data, setData, post, errors, processing } = useForm({
@@ -18,6 +21,12 @@ export default function Index({ page }) {
         meta_keywords: page?.meta_keywords,
         _method: page ? "PUT" : "POST",
     });
+
+    const [content, setContent] = useState(data.content);
+
+    useEffect((e) => {
+        setData('content', content);
+    }, [content])
 
     const submit = (e) => {
         e.preventDefault();
@@ -51,7 +60,6 @@ export default function Index({ page }) {
                         <form onSubmit={submit} className="mt-6 space-y-6">
                             <div className="mb-4">
                                 <InputLabel value="Title" />
-
                                 <TextInput
                                     className="mt-1 block w-full"
                                     value={data.title}
@@ -70,14 +78,11 @@ export default function Index({ page }) {
                             <div className="mb-4">
                                 <InputLabel value="Content" />
 
-                                <TextInput
-                                    className="mt-1 block w-full"
-                                    value={data.content}
-                                    onChange={(e) =>
-                                        setData("content", e.target.value)
-                                    }
-                                    required
-                                    isFocused
+                                <ReactQuill
+                                    theme="snow"
+                                    value={content}
+                                    onChange={setContent}
+                                    style={{ height: "200px" }}
                                 />
 
                                 <InputError
@@ -142,10 +147,10 @@ export default function Index({ page }) {
                                 <Select
                                     className="mt-1 block w-full"
                                     options={[
-                                        { value: "draft", label: "Draft" },
+                                        { value: "draft", label: "draft" },
                                         {
                                             value: "published",
-                                            label: "Published",
+                                            label: "published",
                                         },
                                     ]}
                                     defaultValue={{

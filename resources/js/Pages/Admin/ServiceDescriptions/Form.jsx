@@ -7,6 +7,8 @@ import SecondaryButton from "@/Components/SecondaryButton";
 import TextInput from "@/Components/TextInput";
 import { useState, useEffect } from "react";
 import ActionButton from "@/Components/ActionButton";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export default function Index({ service }) {
     const { data, setData, post, errors, processing } = useForm({
@@ -117,7 +119,10 @@ export default function Index({ service }) {
                                         Services
                                     </h2>
                                     {data.services.map((item, index) => (
-                                        <div key={item.id || index} className="mb-4 border-b pb-4">
+                                        <div
+                                            key={item.id || index}
+                                            className="mb-4 border-b pb-4"
+                                        >
                                             <div className="mb-4 relative">
                                                 <InputLabel value="Title" />
                                                 <div className="flex gap-2 items-center">
@@ -125,18 +130,36 @@ export default function Index({ service }) {
                                                         className="mt-1 block w-full"
                                                         value={item.title}
                                                         onChange={(e) => {
-                                                            const updatedServices = [...data.services]; // Create a new array
-                                                            updatedServices[index].title = e.target.value; // Update the specific service
-                                                            setData("services", updatedServices); // Set the updated array
+                                                            const updatedServices =
+                                                                [
+                                                                    ...data.services,
+                                                                ]; // Create a new array
+                                                            updatedServices[
+                                                                index
+                                                            ].title =
+                                                                e.target.value; // Update the specific service
+                                                            setData(
+                                                                "services",
+                                                                updatedServices
+                                                            ); // Set the updated array
                                                         }}
                                                     />
                                                     <ActionButton
                                                         className="mt-1"
                                                         title="Delete this item"
                                                         onClick={() => {
-                                                            const updatedServices = [...data.services];
-                                                            updatedServices.splice(index, 1); // Remove the service
-                                                            setData("services", updatedServices);
+                                                            const updatedServices =
+                                                                [
+                                                                    ...data.services,
+                                                                ];
+                                                            updatedServices.splice(
+                                                                index,
+                                                                1
+                                                            ); // Remove the service
+                                                            setData(
+                                                                "services",
+                                                                updatedServices
+                                                            );
                                                         }}
                                                     >
                                                         <i className="bi bi-trash m-auto text-lg"></i>
@@ -146,28 +169,42 @@ export default function Index({ service }) {
                                                 <InputError
                                                     className="mt-2"
                                                     message={
-                                                        errors.services && errors.services[index]
-                                                            ? errors.services[index].title
+                                                        errors.services &&
+                                                        errors.services[index]
+                                                            ? errors.services[
+                                                                  index
+                                                              ].title
                                                             : ""
                                                     }
                                                 />
                                             </div>
 
                                             <InputLabel value="Description" />
-                                            <TextInput
-                                                className="mt-1 block w-full"
+                                            <ReactQuill
+                                                theme="snow"
                                                 value={item.description}
                                                 onChange={(e) => {
-                                                    const updatedServices = [...data.services];
-                                                    updatedServices[index].description = e.target.value;
-                                                    setData("services", updatedServices);
+                                                    const updatedServices = [
+                                                        ...data.services,
+                                                    ];
+                                                    updatedServices[
+                                                        index
+                                                    ].description = e;
+                                                    setData(
+                                                        "services",
+                                                        updatedServices
+                                                    );
                                                 }}
-                                            />
+                                                style={{ height: "200px" }}
+                                            ></ReactQuill>
+                                            <div className="mb-10"></div>
                                             <InputError
                                                 className="mt-2"
                                                 message={
-                                                    errors.services && errors.services[index]
-                                                        ? errors.services[index].description
+                                                    errors.services &&
+                                                    errors.services[index]
+                                                        ? errors.services[index]
+                                                              .description
                                                         : ""
                                                 }
                                             />

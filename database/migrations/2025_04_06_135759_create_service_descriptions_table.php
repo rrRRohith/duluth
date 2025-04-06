@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('service_descriptions', function (Blueprint $table) {
             $table->id();
             $table->mediumText('title')->nullable();
-            $table->mediumText('description')->nullable();
+            $table->text('description')->nullable();
             $table->mediumText('icon')->nullable();
             $table->bigInteger('parent_id')->unsigned()->nullable();
             $table->foreign('parent_id')->references('id')->on('service_descriptions')->onDelete("cascade");

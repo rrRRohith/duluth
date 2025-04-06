@@ -20,4 +20,7 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
 
     Route::resource('/pages',  App\Http\Controllers\Admin\PageController::class)
         ->except(['show']);
+
+    Route::resource('/contact-settings',  App\Http\Controllers\Admin\ContactSettingsController::class)
+        ->only(['index', 'store']);
 });

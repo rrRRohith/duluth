@@ -16,7 +16,7 @@ class ServiceDescriptionController extends Controller
     public function index()
     {
         return Inertia::render('Admin/ServiceDescriptions/Index', [
-            'services' => ServiceDescription::get(),
+            'services' => ServiceDescription::service()->get(),
         ]);
     }
 
@@ -39,6 +39,11 @@ class ServiceDescriptionController extends Controller
                 'description',
                 'icon',
             ));
+            if ($request->has('services')) {
+                foreach ($request->services as $serviceData) {
+                    $service->services()->create($serviceData);
+                }
+            }
             return redirect()->route('admin.service-descriptions.index')->withSuccess(__('Service description created successfully.'));
         } catch (\Exception $e) {
             return $this->error($e);
@@ -59,7 +64,7 @@ class ServiceDescriptionController extends Controller
     public function edit(ServiceDescription $service)
     {
         return Inertia::render('Admin/ServiceDescriptions/Form', [
-            'service' => $service,
+            'service' => $service->load(['services:id,title,description,parent_id']),
         ]);
     }
 
@@ -74,6 +79,12 @@ class ServiceDescriptionController extends Controller
                 'description',
                 'icon',
             ));
+            if ($request->has('services')) {
+                $service->services()->delete();
+                foreach ($request->services as $child) {
+                    $service->services()->create($child);
+                }
+            }
             return redirect()->route('admin.service-descriptions.index')->withSuccess(__('Service description updated successfully.'));
         } catch (\Exception $e) {
             return $this->error($e);

@@ -5,7 +5,7 @@ import ActionButton from "@/Components/ActionButton";
 
 export default function Index({ services }) {
     return (
-        <Wrapper title="Pages">
+        <Wrapper title="Service descriptions">
             <section>
                 <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between">
                     <header>

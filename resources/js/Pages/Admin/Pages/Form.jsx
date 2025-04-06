@@ -84,7 +84,7 @@ export default function Index({ page }) {
                                     onChange={setContent}
                                     style={{ height: "200px" }}
                                 />
-
+                                <div className="mb-14"></div>
                                 <InputError
                                     className="mt-2"
                                     message={errors.content}

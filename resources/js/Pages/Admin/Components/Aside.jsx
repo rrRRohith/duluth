@@ -101,7 +101,23 @@ export default function Aside() {
                                     href={route("admin.menus.index")}
                                     class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
-                                    Navigation Menu
+                                    Navigation menu
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href={route("admin.contact-settings.index")}
+                                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                >
+                                    Contact settings
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href={route("admin.service-descriptions.index")}
+                                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                >
+                                    Service descriptions
                                 </Link>
                             </li>
                         </ul>

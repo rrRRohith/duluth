@@ -187,9 +187,7 @@ export default function Index({ service }) {
                                                     const updatedServices = [
                                                         ...data.services,
                                                     ];
-                                                    updatedServices[
-                                                        index
-                                                    ].description = e;
+                                                    updatedServices[index].description = e;
                                                     setData(
                                                         "services",
                                                         updatedServices

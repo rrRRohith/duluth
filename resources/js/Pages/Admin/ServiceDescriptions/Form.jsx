@@ -5,10 +5,8 @@ import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import SecondaryButton from "@/Components/SecondaryButton";
 import TextInput from "@/Components/TextInput";
-import Select from "react-select";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
+import ActionButton from "@/Components/ActionButton";
 
 export default function Index({ service }) {
     const { data, setData, post, errors, processing } = useForm({
@@ -16,6 +14,7 @@ export default function Index({ service }) {
         description: service?.description,
         icon: service?.icon,
         _method: service ? "PUT" : "POST",
+        services: service?.services || [],
     });
 
     const [content, setContent] = useState(data.content);
@@ -34,6 +33,13 @@ export default function Index({ service }) {
                 ? route("admin.service-descriptions.update", service.id)
                 : route("admin.service-descriptions.store")
         );
+    };
+
+    const addNewService = () => {
+        setData("services", [
+            ...data.services,
+            { title: "", description: "", id: Math.random() },
+        ]);
     };
 
     return (
@@ -103,6 +109,77 @@ export default function Index({ service }) {
                                     className="mt-2"
                                     message={errors.description}
                                 />
+                            </div>
+
+                            <div>
+                                <div>
+                                    <h2 class="text-lg font-medium text-gray-900 mb-4">
+                                        Services
+                                    </h2>
+                                    {data.services.map((item, index) => (
+                                        <div key={item.id || index} className="mb-4 border-b pb-4">
+                                            <div className="mb-4 relative">
+                                                <InputLabel value="Title" />
+                                                <div className="flex gap-2 items-center">
+                                                    <TextInput
+                                                        className="mt-1 block w-full"
+                                                        value={item.title}
+                                                        onChange={(e) => {
+                                                            const updatedServices = [...data.services]; // Create a new array
+                                                            updatedServices[index].title = e.target.value; // Update the specific service
+                                                            setData("services", updatedServices); // Set the updated array
+                                                        }}
+                                                    />
+                                                    <ActionButton
+                                                        className="mt-1"
+                                                        title="Delete this item"
+                                                        onClick={() => {
+                                                            const updatedServices = [...data.services];
+                                                            updatedServices.splice(index, 1); // Remove the service
+                                                            setData("services", updatedServices);
+                                                        }}
+                                                    >
+                                                        <i className="bi bi-trash m-auto text-lg"></i>
+                                                    </ActionButton>
+                                                </div>
+
+                                                <InputError
+                                                    className="mt-2"
+                                                    message={
+                                                        errors.services && errors.services[index]
+                                                            ? errors.services[index].title
+                                                            : ""
+                                                    }
+                                                />
+                                            </div>
+
+                                            <InputLabel value="Description" />
+                                            <TextInput
+                                                className="mt-1 block w-full"
+                                                value={item.description}
+                                                onChange={(e) => {
+                                                    const updatedServices = [...data.services];
+                                                    updatedServices[index].description = e.target.value;
+                                                    setData("services", updatedServices);
+                                                }}
+                                            />
+                                            <InputError
+                                                className="mt-2"
+                                                message={
+                                                    errors.services && errors.services[index]
+                                                        ? errors.services[index].description
+                                                        : ""
+                                                }
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                                <SecondaryButton
+                                    type="button"
+                                    onClick={addNewService}
+                                >
+                                    Add new service
+                                </SecondaryButton>
                             </div>
 
                             <div className="flex items-center gap-4">

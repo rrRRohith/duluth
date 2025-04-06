@@ -34,16 +34,4 @@ class Controller extends BaseController
             'title' => 'Dashboard',
         ]);
     }
-
-    /**
-     * Return error response.
-     */
-    public function error(Exception $e)
-    {
-        return request()->exceptsJson()
-            ? response()->json([
-                'error' => config('app.debug') ? $e->getMessage() : __("Something went wrong, please try again later."),
-            ], 500)
-            : redirect()->back()->withError(config('app.debug') ? $e->getMessage() : __("Something went wrong, please try again later."));
-    }
 }

@@ -19,7 +19,11 @@ class ServiceDescription extends Model
     ];
     
     
-    public function childs(){
+    public function services(){
         return $this->hasMany(ServiceDescription::class, 'parent_id');
+    }
+
+    public function scopeService($q){
+        return $q->where('parent_id', null);
     }
 }

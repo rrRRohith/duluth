@@ -13,4 +13,16 @@ class Controller extends BaseController
     {
         return Inertia::render("Web/Home");
     }
+
+    /**
+     * Return error response.
+     */
+    public function error(\Exception $e)
+    {
+        return request()->expectsJson()
+            ? response()->json([
+                'error' => config('app.debug') ? $e->getMessage() : __("Something went wrong, please try again later."),
+            ], 500)
+            : redirect()->back()->withError(config('app.debug') ? $e->getMessage() : __("Something went wrong, please try again later."));
+    }
 }

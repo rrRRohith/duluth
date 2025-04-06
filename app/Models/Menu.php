@@ -22,14 +22,6 @@ class Menu extends Model
     ];
 
     /**
-     * The parent menu item.
-     */
-    public function parent()
-    {
-        return $this->belongsTo(Menu::class, 'parent_id');
-    }
-
-    /**
      * The child menu items.
      */
     public function children()
@@ -40,7 +32,7 @@ class Menu extends Model
     /**
      * The main menu items (those without a parent).
      */
-    public function scopeMain($q)
+    public function scopeMenu($q)
     {
         return $q->whereNull('parent_id');
     }

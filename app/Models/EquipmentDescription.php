@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ServiceDescription extends Model
+class EquipmentDescription extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -19,11 +19,11 @@ class ServiceDescription extends Model
     ];
     
     
-    public function services(){
+    public function equipments(){
         return $this->hasMany(self::class, 'parent_id');
     }
 
-    public function scopeService($q){
+    public function scopeEquipment($q){
         return $q->where('parent_id', null);
     }
 }

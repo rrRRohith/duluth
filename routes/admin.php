@@ -29,4 +29,7 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
 
         Route::resource('/equipment-descriptions',  App\Http\Controllers\Admin\EquipmentDescriptionController::class)
         ->except(['show'])->parameters(['equipment-descriptions' => 'equipment']);
+
+    Route::resource('/videos',  App\Http\Controllers\Admin\VideoController::class)
+        ->except(['show'])->parameters(['videos' => 'video']);
 });

@@ -1,0 +1,1 @@
+import{j as s,B as e}from"./app-fRgEF_iA.js";import{F as t}from"./Flash-KTNIKSty.js";function m({title:r,children:a}){return s.jsx(s.Fragment,{children:s.jsxs("div",{className:"bg-gray-50 min-h-screen",children:[s.jsx(t,{}),s.jsx(e,{title:r}),a]})})}export{m as default};

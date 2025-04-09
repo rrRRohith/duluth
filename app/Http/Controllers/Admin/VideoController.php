@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use DB;
+use Storage;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -35,12 +37,12 @@ class VideoController extends Controller
     public function store(VideoRequest $request)
     {
         try {
-            \DB::transaction(function () use ($request) {
-                $video = Video::create($request->only([
-                    'title',
-                    'file',
-                    //'type',
-                ]));
+            DB::transaction(function () use ($request) {
+                $request->merge([
+                    'file' => ($request->file('video')->store('videos', 'public')),
+                ]);
+
+                Video::create($request->only(['title', 'type', 'file']));
             });
 
             return redirect()
@@ -76,12 +78,16 @@ class VideoController extends Controller
     public function update(VideoRequest $request, Video $video)
     {
         try {
-            \DB::transaction(function () use ($request, $video) {
-                $video->update($request->only([
-                    'title',
-                    'file',
-                    //'type',
-                ]));
+            DB::transaction(function () use ($request, $video) {
+
+                $request->merge([
+                    'file' => ($request->file('video')->store('videos', 'public')),
+                ]);
+
+                if ($video->file && Storage::disk('public')->exists($video->file)) {
+                    Storage::disk('public')->delete($video->file);
+                }
+                $video->update($request->only(['title', 'type', 'file']));
             });
 
             return redirect()

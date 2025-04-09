@@ -6,6 +6,8 @@ import InputLabel from "@/Components/InputLabel";
 import SecondaryButton from "@/Components/SecondaryButton";
 import TextInput from "@/Components/TextInput";
 import Select from "react-select";
+import { useState } from "react";
+import Video from "./Video";
 
 export default function Index({ video, types }) {
     // Convert types to react-select options
@@ -17,7 +19,7 @@ export default function Index({ video, types }) {
     const { data, setData, post, errors, processing } = useForm({
         title: video?.title,
         type: video?.type,
-        file: video?.file,
+        //file: video?.file,
         _method: video ? "PUT" : "POST",
     });
 
@@ -29,6 +31,8 @@ export default function Index({ video, types }) {
                 : route("admin.videos.store")
         );
     };
+
+    const [showVideo, setShowVideo] = useState(false);
 
     return (
         <Wrapper title={video ? "Edit video" : "Create new video"}>
@@ -93,19 +97,23 @@ export default function Index({ video, types }) {
 
                                 <div>
                                     <input
+                                        onChange={(e) =>
+                                            setData("video", e.target.files[0])
+                                        }
+                                        accept="video/*"
                                         className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 "
-                                        aria-describedby="file_input_help"
-                                        id="file_input"
                                         type="file"
                                     />
                                     <p
                                         className="mt-1 text-sm text-gray-500 dark:text-gray-300"
                                         id="file_input_help"
                                     >
-                                        MP4, AVI, WEBM, MOV(Max 20MB)
+                                        mp4,mov,avi,wmv(Max 20MB)
                                     </p>
                                 </div>
-
+                                {video && (
+                                    <div onClick={(e) => {setShowVideo(true)}} className="text-blue-600 cursor-pointer">View uploaded video</div>
+                                )}
                                 <InputError
                                     className="mt-2"
                                     message={errors.file}
@@ -125,6 +133,7 @@ export default function Index({ video, types }) {
                     </div>
                 </div>
             </section>
+            <Video video={video} show={showVideo} setShow={setShowVideo} />
         </Wrapper>
     );
 }

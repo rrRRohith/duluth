@@ -16,7 +16,7 @@ class VideoRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'file' => 'sometimes|nullable|mimes:mp4,mov,avi,wmv|max:20480', // 20MB
+            'video' => 'required|mimes:mp4,mov,avi,wmv|max:20480', // 20MB
             'type' => 'required|in:services,equipments,works',
         ];
     }

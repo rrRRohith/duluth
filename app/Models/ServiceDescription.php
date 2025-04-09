@@ -16,6 +16,7 @@ class ServiceDescription extends Model
         'description',
         'icon',
         'parent_id',
+        'type',
     ];
     
     

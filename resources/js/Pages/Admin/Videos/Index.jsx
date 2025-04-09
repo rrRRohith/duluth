@@ -2,8 +2,14 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import { Link, router } from "@inertiajs/react";
 import Wrapper from "../Components/Wrapper";
 import ActionButton from "@/Components/ActionButton";
+import { useState } from "react";
+import Video from "./Video";
 
 export default function Index({ videos }) {
+
+    const [video, setVideo] = useState(null);
+    const [showVideo, setShowVideo] = useState(false);
+
     return (
         <Wrapper title="Video">
             <section>
@@ -31,6 +37,9 @@ export default function Index({ videos }) {
                                         Title
                                     </th>
                                     <th scope="col" className="px-6 py-3">
+                                        Video
+                                    </th>
+                                    <th scope="col" className="px-6 py-3">
                                         Type
                                     </th>
                                     <th scope="col" className="px-6 py-3">
@@ -50,6 +59,9 @@ export default function Index({ videos }) {
                                         >
                                             <td className="px-6 py-4">
                                                 {video.title}
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                <div onClick={(e) => {setShowVideo(true); setVideo(video)}} className="text-blue-600 cursor-pointer">View video</div>
                                             </td>
                                             <td className="px-6 py-4">
                                                 {video.type_label}
@@ -103,6 +115,7 @@ export default function Index({ videos }) {
                     </div>
                 </div>
             </section>
+            <Video video={video} show={showVideo} setShow={setShowVideo} />
         </Wrapper>
     );
 }

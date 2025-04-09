@@ -39,7 +39,7 @@ class ServiceDescriptionController extends Controller
                 'description',
                 'icon',
             ));
-            if ($request->has('services')) {
+            if ($request->has('services') && $request->type == 'accordion') {
                 foreach ($request->services as $serviceData) {
                     $service->services()->create($serviceData);
                 }
@@ -79,8 +79,8 @@ class ServiceDescriptionController extends Controller
                 'description',
                 'icon',
             ));
-            if ($request->has('services')) {
-                $service->services()->delete();
+            $service->services()->delete();
+            if ($request->has('services') && $request->type == 'accordion') {
                 foreach ($request->services as $child) {
                     $service->services()->create($child);
                 }

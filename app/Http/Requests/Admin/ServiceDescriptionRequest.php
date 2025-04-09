@@ -18,6 +18,7 @@ class ServiceDescriptionRequest extends FormRequest
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:255',
             'icon' => 'sometimes|nullable|string|max:255',
+            'type' => 'required|in:accordion,box',
             'services' => 'sometimes|nullable|array',
             'services.*.title' => 'required|string|max:255',
             'services.*.description' => 'required|string|max:255',

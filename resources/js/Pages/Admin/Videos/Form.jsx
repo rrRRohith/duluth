@@ -105,8 +105,7 @@ export default function Index({ video, types }) {
                                         type="file"
                                     />
                                     <p
-                                        className="mt-1 text-sm text-gray-500 dark:text-gray-300"
-                                        id="file_input_help"
+                                        className="mt-1 text-sm text-gray-500"
                                     >
                                         mp4,mov,avi,wmv(Max 20MB)
                                     </p>

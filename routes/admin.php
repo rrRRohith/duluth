@@ -32,4 +32,7 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
 
     Route::resource('/videos',  App\Http\Controllers\Admin\VideoController::class)
         ->except(['show'])->parameters(['videos' => 'video']);
+
+    Route::resource('/banner-settings',  App\Http\Controllers\Admin\BannerSettingsController::class)
+        ->only(['index', 'store']);
 });

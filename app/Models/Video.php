@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Storage;
 class Video extends Model
 {
     const TYPES = [
-        'services' => 'Services',
-        'equipments' => 'Equipments',
-        'works' => 'Works',
+        'services' => 'Client Services',
+        'equipments' => 'Equipment Showcase',
+        'works' => 'Partnership Opportunities',
     ];
     use \Illuminate\Database\Eloquent\SoftDeletes;
 

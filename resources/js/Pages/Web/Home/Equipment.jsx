@@ -1,7 +1,7 @@
 export default function Equipment() {
     return (
         <>
-            <div className="container m-auto px-4 py-24">
+            <div className="container m-auto px-4 py-24 sm:px-6 lg:px-8">
                 <div className="text-center">
                     <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
                         Durable Medical Equipment

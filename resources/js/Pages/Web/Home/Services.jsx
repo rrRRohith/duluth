@@ -2,7 +2,7 @@ export default function Services() {
     return (
         <>
             <div className="bg-gray-50">
-                <div className="container m-auto px-4 py-24">
+                <div className="container m-auto px-4 py-24 sm:px-6 lg:px-8">
                     <div className="w-full flex items-center">
                         <div class="text-center m-auto">
                             <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">

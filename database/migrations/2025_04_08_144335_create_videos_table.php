@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('file')->nullable();
-            $table->enum('type', ['services', 'equipments', 'works']);
+            $table->string('handle');
+            $table->string('video')->nullable();
+            $table->enum('type', ['services', 'equipments', 'partnerships']);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -8,6 +8,9 @@ import TextInput from "@/Components/TextInput";
 import Select from "react-select";
 import { useState } from "react";
 import Video from "./Video";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import Checkbox from "@/Components/Checkbox";
 
 export default function Index({ video, types }) {
     // Convert types to react-select options
@@ -19,8 +22,11 @@ export default function Index({ video, types }) {
     const { data, setData, post, errors, processing } = useForm({
         title: video?.title,
         type: video?.type,
-        //file: video?.file,
+        handle: video?.handle,
+        video: video?.video,
+        description: video?.description,
         _method: video ? "PUT" : "POST",
+        show_on_home: video?.show_on_home,
     });
 
     const submit = (e) => {
@@ -92,25 +98,66 @@ export default function Index({ video, types }) {
                                 />
                             </div>
                             <div className="mb-4">
+                                <InputLabel value="Description" />
+
+                                <ReactQuill
+                                    theme="snow"
+                                    value={data.description}
+                                    onChange={(value) =>
+                                        setData("description", value)
+                                    }
+                                    style={{ height: "200px" }}
+                                />
+                                <div className="mb-14"></div>
+                                <InputError
+                                    className="mt-2"
+                                    message={errors.description}
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <div className="flex gap-1 items-center">
+                                    <Checkbox
+                                    id="show_on_home"
+                                        checked={data.show_on_home}
+                                        onChange={(e) =>
+                                            setData(
+                                                "show_on_home",
+                                                e.target.checked
+                                            )
+                                        }
+                                    />
+                                    <InputLabel htmlFor="show_on_home" value="Show on home" />
+                                </div>
+                                <InputError
+                                    className="mt-2"
+                                    message={errors.show_on_home}
+                                />
+                            </div>
+                            <div className="mb-4">
                                 <InputLabel value="Video File" />
 
                                 <div>
                                     <input
                                         onChange={(e) =>
-                                            setData("video", e.target.files[0])
+                                            setData("file", e.target.files[0])
                                         }
                                         accept="video/*"
                                         className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 "
                                         type="file"
                                     />
-                                    <p
-                                        className="mt-1 text-sm text-gray-500"
-                                    >
+                                    <p className="mt-1 text-sm text-gray-500">
                                         mp4,mov,avi,wmv(Max 20MB)
                                     </p>
                                 </div>
                                 {video && (
-                                    <div onClick={(e) => {setShowVideo(true)}} className="text-blue-600 cursor-pointer">View uploaded video</div>
+                                    <div
+                                        onClick={(e) => {
+                                            setShowVideo(true);
+                                        }}
+                                        className="text-blue-600 cursor-pointer"
+                                    >
+                                        View uploaded video
+                                    </div>
                                 )}
                                 <InputError
                                     className="mt-2"

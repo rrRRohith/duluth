@@ -26,5 +26,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::name('videos.')->prefix('videos')->group(function () {
+    Route::get('/', 'App\Http\Controllers\VideoController@index')->name('index');
+    Route::get('/{type}', 'App\Http\Controllers\VideoController@type')->name('type');
+    Route::get('/{type}/{video:handle}', 'App\Http\Controllers\VideoController@show')->name('show');
+});
+
 require __DIR__.'/admin.php';
 require __DIR__.'/auth.php';

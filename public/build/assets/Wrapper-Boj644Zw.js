@@ -1,1 +1,0 @@
-import{j as r}from"./app-BoUYa7zH.js";import m from"./Footer-C5_nbB7A.js";import e from"./Header-Bvgm9Ghs.js";import p from"./Layout-DGYSkcW_.js";import"./Flash-Y3z1_8A7.js";function j({children:o,title:t}){return r.jsxs(p,{title:t,children:[r.jsx(e,{}),o,r.jsx(m,{})]})}export{j as default};

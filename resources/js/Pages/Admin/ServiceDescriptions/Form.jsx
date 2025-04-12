@@ -96,7 +96,6 @@ export default function Index({ service }) {
                                         setData("title", e.target.value)
                                     }
                                     required
-                                    isFocused
                                 />
 
                                 <InputError

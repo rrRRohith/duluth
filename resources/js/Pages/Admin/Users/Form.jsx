@@ -62,7 +62,6 @@ export default function Index({ user, roles }) {
                                         setData("first_name", e.target.value)
                                     }
                                     required
-                                    isFocused
                                 />
 
                                 <InputError

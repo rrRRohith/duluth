@@ -74,7 +74,6 @@ export default function Index({ equipment }) {
                                         setData("title", e.target.value)
                                     }
                                     required
-                                    isFocused
                                 />
 
                                 <InputError

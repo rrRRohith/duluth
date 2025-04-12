@@ -66,7 +66,6 @@ export default function Index({ video, types }) {
                                         setData("title", e.target.value)
                                     }
                                     required
-                                    isFocused
                                 />
 
                                 <InputError

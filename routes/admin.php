@@ -27,12 +27,18 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
     Route::resource('/service-descriptions',  App\Http\Controllers\Admin\ServiceDescriptionController::class)
         ->except(['show'])->parameters(['service-descriptions' => 'service']);
 
-        Route::resource('/equipment-descriptions',  App\Http\Controllers\Admin\EquipmentDescriptionController::class)
+    Route::resource('/equipment-descriptions',  App\Http\Controllers\Admin\EquipmentDescriptionController::class)
         ->except(['show'])->parameters(['equipment-descriptions' => 'equipment']);
 
     Route::resource('/videos',  App\Http\Controllers\Admin\VideoController::class)
         ->except(['show'])->parameters(['videos' => 'video']);
 
     Route::resource('/banner-settings',  App\Http\Controllers\Admin\BannerSettingsController::class)
+        ->only(['index', 'store']);
+
+    Route::resource('/site-settings',  App\Http\Controllers\Admin\SiteSettingsController::class)
+        ->only(['index', 'store']);
+        
+    Route::resource('/home-page-settings',  App\Http\Controllers\Admin\HomePageSettingsController::class)
         ->only(['index', 'store']);
 });

@@ -44,7 +44,6 @@ export default function Index({ settings }) {
                                         setData("email", e.target.value)
                                     }
                                     required
-                                    isFocused
                                 />
 
                                 <InputError

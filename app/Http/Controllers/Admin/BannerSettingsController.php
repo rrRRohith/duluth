@@ -31,7 +31,7 @@ class BannerSettingsController extends Controller
                     'image' => $request->hasFile('file') ? ($request->file('file')->store('images', 'public')) : $request->image,
                 ]);
 
-                $settings = BannerSetting::updateOrCreate([], $request->only([
+                BannerSetting::updateOrCreate([], $request->only([
                     'title',
                     'description',
                     'button1_text',

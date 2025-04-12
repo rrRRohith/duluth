@@ -136,7 +136,6 @@ export default function Index({ menu }) {
                                         setData("title", e.target.value)
                                     }
                                     required
-                                    isFocused
                                 />
 
                                 <InputError

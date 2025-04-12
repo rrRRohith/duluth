@@ -67,7 +67,6 @@ export default function Index({ page }) {
                                         setData("title", e.target.value)
                                     }
                                     required
-                                    isFocused
                                 />
 
                                 <InputError

@@ -22,6 +22,11 @@ class BannerSetting extends Model
         'image_url',
     ];
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
     protected $casts = [
         'descriptions' => 'object',
     ];

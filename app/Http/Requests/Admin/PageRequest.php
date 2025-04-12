@@ -13,7 +13,7 @@ class PageRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'handle' => Str::slug($this->input('handle', $this->input('title') . '-' . Str::random(4))),
+            'handle' => $this->handle ? : Str::slug($this->input('title') . '-' . Str::random(4)),
         ]);
     }
 

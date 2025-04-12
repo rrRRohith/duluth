@@ -39,10 +39,10 @@ class VideoController extends Controller
         try {
             DB::transaction(function () use ($request) {
                 $request->merge([
-                    'file' => ($request->file('video')->store('videos', 'public')),
+                    'video' => ($request->file('file')->store('videos', 'public')),
                 ]);
 
-                Video::create($request->only(['title', 'type', 'file']));
+                Video::create($request->only(['title', 'type', 'video', 'handle', 'description', 'show_on_home']));
             });
 
             return redirect()
@@ -81,13 +81,13 @@ class VideoController extends Controller
             DB::transaction(function () use ($request, $video) {
 
                 $request->merge([
-                    'file' => ($request->file('video')->store('videos', 'public')),
+                    'video' => $request->hasFile('file') ? ($request->file('file')->store('videos', 'public')) : $request->video,
                 ]);
 
                 if ($video->file && Storage::disk('public')->exists($video->file)) {
                     Storage::disk('public')->delete($video->file);
                 }
-                $video->update($request->only(['title', 'type', 'file']));
+                $video->update($request->only(['title', 'type', 'video', 'handle', 'description', 'show_on_home']));
             });
 
             return redirect()

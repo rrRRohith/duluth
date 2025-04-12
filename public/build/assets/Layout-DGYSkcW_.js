@@ -1,1 +1,0 @@
-import{j as s,B as a}from"./app-BoUYa7zH.js";import{F as o}from"./Flash-Y3z1_8A7.js";function n({title:r,children:t}){return s.jsxs(s.Fragment,{children:[s.jsx(o,{}),s.jsx(a,{title:r}),t]})}export{n as default};

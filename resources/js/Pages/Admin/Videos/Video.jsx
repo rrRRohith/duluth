@@ -15,7 +15,7 @@ export default function Video({video, show, setShow}){
                     </ActionButton>
                 </div>
                 <video controls className="w-full h-auto">
-                    <source src={video?.file_url} type="video/mp4" />
+                    <source src={video?.video_url} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>

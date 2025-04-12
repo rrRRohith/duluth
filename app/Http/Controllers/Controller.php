@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Video;
 use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Http\Request;
@@ -11,7 +12,9 @@ class Controller extends BaseController
 {
     public function home(Request $request) : Response
     {
-        return Inertia::render("Web/Home");
+        return Inertia::render("Web/Home", [
+            'videos' => Video::whereShowOnHome(true)->get(),
+        ]);
     }
 
     /**

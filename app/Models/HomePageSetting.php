@@ -14,4 +14,13 @@ class HomePageSetting extends Model
     protected $fillable = [
         'settings'
     ];
+
+     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'settings' => 'object',
+    ];
 }

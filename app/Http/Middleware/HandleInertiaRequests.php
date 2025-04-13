@@ -2,8 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Http\Request;
+use App\Models\Menu;
 use Inertia\Middleware;
+use App\Models\SiteSetting;
+use Illuminate\Http\Request;
+use App\Models\ContactSetting;
+use App\Http\Resources\MenuResource;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -41,6 +45,22 @@ class HandleInertiaRequests extends Middleware
                 'success' => fn() => $request->session()->get('success'),
                 'error'   => fn()   => $this->errors(),
             ],
+            'site_settings' => SiteSetting::first()?->only([
+                'name',
+                'logo',
+                'footer_description',
+                'copyright_description',
+            ]),
+            'contact_info' => ContactSetting::first()?->only([
+                'phone',
+                'email',
+                'address',
+            ]),
+            'main_menu' => new MenuResource(Menu::whereHandle('main-menu')->menu()->with('children')->first()),
+            'footer_menus' => [
+                new MenuResource(Menu::whereHandle('admin-portal')->menu()->with('children')->first()),
+                new MenuResource(Menu::whereHandle('resources')->menu()->with('children')->first()),
+            ]
         ];
     }
 

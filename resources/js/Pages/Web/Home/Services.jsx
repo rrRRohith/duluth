@@ -1,4 +1,7 @@
+import { usePage } from "@inertiajs/react";
+
 export default function Services() {
+    const {home_page_settings} =  usePage().props;
     return (
         <>
             <div className="bg-gray-50">
@@ -6,11 +9,10 @@ export default function Services() {
                     <div className="w-full flex items-center">
                         <div class="text-center m-auto">
                             <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                                Our Services
+                                {home_page_settings?.services?.title}
                             </h2>
                             <p class="mt-4 text-xl text-gray-600">
-                                Comprehensive care services for all ages and
-                                needs
+                                {home_page_settings?.services?.description}
                             </p>
                         </div>
                     </div>

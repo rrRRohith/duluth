@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BannerSetting;
+use App\Models\HomePageSetting;
 use App\Models\Video;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -10,10 +12,21 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    public function home(Request $request) : Response
+    public function home(Request $request): Response
     {
         return Inertia::render("Web/Home", [
             'videos' => Video::whereShowOnHome(true)->get(),
+            'home_page_settings' => HomePageSetting::first()?->settings,
+            'banner_settings' => BannerSetting::first()?->only([
+                'title',
+                'description',
+                'button1_text',
+                'button1_link',
+                'button2_text',
+                'button2_link',
+                'image',
+                'descriptions',
+            ]),
         ]);
     }
 

@@ -19,6 +19,7 @@ class Menu extends Model
         'parent_id',
         'link',
         'position',
+        'icon',
     ];
 
     /**

@@ -18,7 +18,7 @@ class MenuResource extends JsonResource
     {
         return [
             ...parent::toArray($request),
-            'children'     => self::collection($this->children),
+            'children'     => self::collection($this->children ?? []),
         ];
     }
 }

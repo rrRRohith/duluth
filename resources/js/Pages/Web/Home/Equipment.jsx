@@ -1,14 +1,16 @@
+import { usePage } from "@inertiajs/react";
+
 export default function Equipment() {
+    const {home_page_settings} =  usePage().props;
     return (
         <>
             <div className="container m-auto px-4 py-24 sm:px-6 lg:px-8">
                 <div className="text-center">
                     <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                        Durable Medical Equipment
+                        {home_page_settings?.equipments?.title}
                     </h2>
                     <p className="mt-4 text-xl text-gray-600">
-                        Comprehensive Medical Equipment and Supplies for Home
-                        Healthcare
+                        {home_page_settings?.equipments?.description}
                     </p>
                 </div>
                 <div

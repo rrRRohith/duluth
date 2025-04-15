@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\BannerSetting;
+use App\Models\EquipmentDescription;
 use App\Models\HomePageSetting;
+use App\Models\ServiceDescription;
 use App\Models\Video;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -27,6 +29,9 @@ class Controller extends BaseController
                 'image',
                 'descriptions',
             ]),
+            'service_accordions' => ServiceDescription::service()->whereType('accordion')->with(['services'])->get(),
+            'service_cards' => ServiceDescription::service()->whereType('box')->get(),
+            'equipment_accordions' => EquipmentDescription::equipment()->with(['equipments'])->get(),
         ]);
     }
 

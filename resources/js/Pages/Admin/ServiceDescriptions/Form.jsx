@@ -47,7 +47,7 @@ export default function Index({ service }) {
     };
     const types = [
         { value: "accordion", label: "Accordion" },
-        { value: "card", label: "Card" },
+        { value: "box", label: "Box" },
     ];
     const selectedType = types.find((type) => type.value === data.type);
 

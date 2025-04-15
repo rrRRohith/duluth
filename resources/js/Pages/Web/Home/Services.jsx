@@ -1,7 +1,8 @@
 import { usePage } from "@inertiajs/react";
 
 export default function Services() {
-    const { home_page_settings, service_descriptions } = usePage().props;
+    const { home_page_settings, service_accordions, service_cards } =
+        usePage().props;
     return (
         <>
             <div className="bg-gray-50">
@@ -21,7 +22,7 @@ export default function Services() {
                         className="mt-20 pb-8"
                         data-accordion="collapse"
                     >
-                        {service_descriptions.map((service, index) => (
+                        {service_accordions.map((service, index) => (
                             <>
                                 <div className="bg-white rounded-md shadow-md mb-4">
                                     <h2 id="services-heading-1">
@@ -74,7 +75,9 @@ export default function Services() {
                                                         <>
                                                             <div className="p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200">
                                                                 <p className="font-medium text-gray-900">
-                                                                    {subService.title}
+                                                                    {
+                                                                        subService.title
+                                                                    }
                                                                 </p>
                                                             </div>
                                                         </>
@@ -107,121 +110,21 @@ export default function Services() {
                         ))}
                     </div>
                     <div class="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-                        <div class="bg-white rounded-lg shadow-lg p-6 hover:transform hover:scale-105 transition-transform duration-300">
-                            <div class="flex justify-center">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="lucide lucide-users h-8 w-8 text-blue-600"
-                                >
-                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="9" cy="7" r="4"></circle>
-                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                </svg>
+                        {service_cards.map((item, index) => (
+                            <div class="bg-white rounded-lg shadow-lg p-6 hover:transform hover:scale-105 transition-transform duration-300">
+                                <div class="flex justify-center">
+                                    <i
+                                        className={`text-4xl text-blue-600 bi ${item.icon}`}
+                                    ></i>
+                                </div>
+                                <h3 class="mt-4 text-xl font-medium text-gray-900 text-center">
+                                    {item.title}
+                                </h3>
+                                <p class="mt-2 text-gray-600 text-center">
+                                    {item.description}
+                                </p>
                             </div>
-                            <h3 class="mt-4 text-xl font-medium text-gray-900 text-center">
-                                Skilled Nursing Care
-                            </h3>
-                            <p class="mt-2 text-gray-600 text-center">
-                                Professional nursing services provided by
-                                licensed nurses, including wound care,
-                                medication management, and health monitoring.
-                            </p>
-                        </div>
-                        <div class="bg-white rounded-lg shadow-lg p-6 hover:transform hover:scale-105 transition-transform duration-300">
-                            <div class="flex justify-center">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="lucide lucide-heart h-8 w-8 text-blue-600"
-                                >
-                                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
-                                </svg>
-                            </div>
-                            <h3 class="mt-4 text-xl font-medium text-gray-900 text-center">
-                                Personal Care Services
-                            </h3>
-                            <p class="mt-2 text-gray-600 text-center">
-                                Assistance with daily activities such as
-                                bathing, dressing, grooming, and meal
-                                preparation.
-                            </p>
-                        </div>
-                        <div class="bg-white rounded-lg shadow-lg p-6 hover:transform hover:scale-105 transition-transform duration-300">
-                            <div class="flex justify-center">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="lucide lucide-user-plus h-8 w-8 text-blue-600"
-                                >
-                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="9" cy="7" r="4"></circle>
-                                    <line x1="19" x2="19" y1="8" y2="14"></line>
-                                    <line
-                                        x1="22"
-                                        x2="16"
-                                        y1="11"
-                                        y2="11"
-                                    ></line>
-                                </svg>
-                            </div>
-                            <h3 class="mt-4 text-xl font-medium text-gray-900 text-center">
-                                Companion Sitter Services
-                            </h3>
-                            <p class="mt-2 text-gray-600 text-center">
-                                Companionship and assistance for elderly or
-                                disabled individuals, providing emotional
-                                support and basic care needs.
-                            </p>
-                        </div>
-                        <div class="bg-white rounded-lg shadow-lg p-6 hover:transform hover:scale-105 transition-transform duration-300">
-                            <div class="flex justify-center">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="lucide lucide-clock h-8 w-8 text-blue-600"
-                                >
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                </svg>
-                            </div>
-                            <h3 class="mt-4 text-xl font-medium text-gray-900 text-center">
-                                24/7 Care Available
-                            </h3>
-                            <p class="mt-2 text-gray-600 text-center">
-                                Round-the-clock care options for patients who
-                                require continuous monitoring and assistance.
-                            </p>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>

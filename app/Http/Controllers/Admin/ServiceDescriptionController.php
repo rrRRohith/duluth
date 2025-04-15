@@ -38,6 +38,7 @@ class ServiceDescriptionController extends Controller
                 'title',
                 'description',
                 'icon',
+                'type'
             ));
             if ($request->has('services') && $request->type == 'accordion') {
                 foreach ($request->services as $serviceData) {
@@ -78,6 +79,7 @@ class ServiceDescriptionController extends Controller
                 'title',
                 'description',
                 'icon',
+                'type'
             ));
             $service->services()->delete();
             if ($request->has('services') && $request->type == 'accordion') {

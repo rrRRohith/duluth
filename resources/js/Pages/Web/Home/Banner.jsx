@@ -2,7 +2,6 @@ import { usePage } from "@inertiajs/react";
 
 export default function Banner() {
     const { banner_settings } = usePage().props;
-    console.log(banner_settings);
 
     return (
         <>

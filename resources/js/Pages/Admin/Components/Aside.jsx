@@ -22,6 +22,38 @@ export default function Aside() {
                         <button
                             type="button"
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                            aria-controls="posts"
+                            data-collapse-toggle="posts"
+                        >
+                            <i class="bi bi-file-earmark text-2xl"></i>
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
+                                Posts
+                            </span>
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                        <ul id="posts" class="hidden py-2 space-y-2">
+                            <li>
+                                <Link
+                                    href={route("admin.posts.index")}
+                                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                >
+                                    All posts
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href={route("admin.posts.create")}
+                                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                >
+                                    New post
+                                </Link>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button
+                            type="button"
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="pages"
                             data-collapse-toggle="pages"
                         >

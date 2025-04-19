@@ -34,6 +34,9 @@ export default function Index({ menus }) {
                                         Handle
                                     </th>
                                     <th scope="col" className="px-6 py-3">
+                                        Last Updated
+                                    </th>
+                                    <th scope="col" className="px-6 py-3">
                                         Actions
                                     </th>
                                 </tr>
@@ -47,6 +50,9 @@ export default function Index({ menus }) {
                                             </td>
                                             <td className="px-6 py-4">
                                                 {menu.handle}
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                {menu.updated_at}
                                             </td>
                                             <td className="px-6 py-4">
                                                 <div className="flex space-x-4">

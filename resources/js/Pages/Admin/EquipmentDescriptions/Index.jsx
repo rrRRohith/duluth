@@ -55,7 +55,7 @@ export default function Index({ equipments }) {
                                                 <div className="max-w-[300px] truncate">{equipment.description}</div>
                                             </td>
                                             <td className="px-6 py-4 capitalize">
-                                                {equipment.created_at}
+                                                {equipment.updated_at}
                                             </td>
                                             <td className="px-6 py-4">
                                                 <div className="flex space-x-4">

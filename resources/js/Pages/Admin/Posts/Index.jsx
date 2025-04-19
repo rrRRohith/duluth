@@ -5,7 +5,7 @@ import ActionButton from "@/Components/ActionButton";
 
 export default function Index({ posts }) {
     return (
-        <Wrapper title="Pages">
+        <Wrapper title="Posts">
             <section>
                 <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between">
                     <header>
@@ -61,7 +61,7 @@ export default function Index({ posts }) {
                                                 {post.status}
                                             </td>
                                             <td className="px-6 py-4 capitalize">
-                                                {post.created_at}
+                                                {post.updated_at}
                                             </td>
                                             <td className="px-6 py-4">
                                                 <div className="flex space-x-4">

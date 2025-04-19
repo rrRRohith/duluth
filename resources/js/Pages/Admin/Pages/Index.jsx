@@ -61,7 +61,7 @@ export default function Index({ pages }) {
                                                 {page.status}
                                             </td>
                                             <td className="px-6 py-4 capitalize">
-                                                {page.created_at}
+                                                {page.updated_at}
                                             </td>
                                             <td className="px-6 py-4">
                                                 <div className="flex space-x-4">
